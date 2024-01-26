@@ -1,9 +1,9 @@
 # SAE_Web_PHP
 
-## Base de données
-Pour crée la Base de données vous devais faire les commandes:
+## Création de la base de données
+Pour créer la base de données de notre application web, vous devez entre les lignes de commandes suivantes :
 
-Sur Windows
+Si vous êtes sur Windows :
 ```shell
 php .\Data\create-database
 
@@ -12,7 +12,7 @@ php .\Data\create-table
 php .\Data\creationbd.php load-data
 ```
 
-Sur linux
+Si vous êtes sur Linux :
 ```bash
 php ./Data/create-database
 
