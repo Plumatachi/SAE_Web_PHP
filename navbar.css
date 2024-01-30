@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #000000;
+}
+
+h1{
+    color: white;
+    margin: 5vh 0 2vh 5vw;
+}
+
+nav.nav-bar ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+}
+
+nav.nav-bar a{
+    text-decoration: none;
+    color: #fff;
+}
+
+nav.nav-bar{
+    background-color: #1E1E1E;
+}
+
+div.albums ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: nowrap;
+    list-style: none;
+}
+
+div.albums div{
+    background-color: #1E1E1E;
+    border-radius: 20px;
+    padding: 1.5vh 1.5vw;
+}
+
+div.artistes ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: nowrap;
+    list-style: none;
+}
+
+div.artistes div{
+    background-color: #1E1E1E;
+    border-radius: 20px;
+    padding: 1.5vh 1.5vw;
+}
+
+.groupe{
+    color: white;
+}
