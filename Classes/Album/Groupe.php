@@ -40,5 +40,19 @@ class Groupe{
         return $html;
     }
 
+    public static function getArtistesOption(){
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT * FROM GROUPE ORDER BY nom ASC');
+        $query->execute();
+        $groupes = $query->fetchAll();
+        $html = '<select name="artiste" id="artiste">
+                    <option value="">Artiste</option>';
+        foreach ($groupes as $groupe){
+            $instance = new Groupe($groupe['idGroupe'], $groupe['nom']);
+            $html .= '<option value="'.$instance->getIdGroupe().'">'.$instance->getNom().'</option>';
+        }
+        return $html .='</select>';
+    }
+
 }
 ?>

@@ -58,9 +58,14 @@ class Album{
                 </li>';
     }
 
-    public static function getAlbums(){
+    public static function getAlbums(int $limit=null){
         $pdo = Database::getPdo();
-        $query = $pdo->prepare('SELECT * FROM ALBUM LIMIT 5');
+        if ($limit){
+            $query = $pdo->prepare('SELECT * FROM ALBUM LIMIT '.$limit);
+        }
+        else{
+            $query = $pdo->prepare('SELECT * FROM ALBUM');
+        }
         $query->execute();
         $albums = $query->fetchAll();
         $html = '';
@@ -69,6 +74,19 @@ class Album{
             $html .= $instance->render();
         }
         return $html;
+    }
+
+    public static function getAnneesOption(){
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT DISTINCT annee FROM ALBUM ORDER BY annee DESC');
+        $query->execute();
+        $annees = $query->fetchAll();
+        $html = '<select name="anne" id="anne">
+                <option value="">Année</option>';
+        foreach ($annees as $annee){
+            $html .= '<option value="'.$annee['annee'].'">'.$annee['annee'].'</option>';
+        }
+        return $html .= '</select>';
     }
 
 }
