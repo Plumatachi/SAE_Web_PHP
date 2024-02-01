@@ -1,6 +1,6 @@
 <?php
 define('SQLITE_DB', __DIR__.'/../Data/cisuM.sqlite');
-require_once './Classes/Album/Spyc.php';
+require_once __DIR__.'/../Classes/Album/Spyc.php';
 $pdo = new PDO('sqlite:' . SQLITE_DB);
 
 switch ($argv[1]) {
@@ -55,7 +55,7 @@ switch ($argv[1]) {
     case 'load-data':
         echo '→ Go load data to tables' . PHP_EOL;
         $yamlContents = file_get_contents('Data/extrait.yml');
-        $data = $Data = spyc_load_file('Data/extrait.yml');
+        $data = Spyc::YAMLLoadString($yamlContents);
         foreach ($data as $album) {
             
             $idartiste = $pdo->query('SELECT idGroupe FROM GROUPE WHERE nom = "'.$album['by'].'"')->fetchColumn();

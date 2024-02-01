@@ -5,9 +5,9 @@ Pour créer la base de données de notre application web, vous devez entre les l
 
 Si vous êtes sur Windows :
 ```shell
-php .\Data\create-database
+php .\Data\creationbd.php create-database
 
-php .\Data\create-table
+php .\Data\creationbd.php create-table
 
 php .\Data\creationbd.php load-data
 ```

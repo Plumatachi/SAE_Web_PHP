@@ -11,26 +11,26 @@ require_once 'Classes/Autoloader.php';
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="albums.css">
 </head>
 <body>
     <?php
         include 'nav.php';
     ?>
-    <div class="albums">
-        <h1>Albums publiés</h1>
-        <ul>
+    <div class="content">
+        <h1>Albums</h1>
+        <div class="recherche">
+            <input type="search" name="search" id="search">
             <?php
-            echo Album::getAlbums(5);
+                echo Album::getAnneesOption();
+                echo Groupe::getArtistesOption();
             ?>
-        </ul>
-    </div>
-    <div class="artistes">
-        <h1>Artistes</h1>
-        <ul>
+        </div>
+        <div class="albums">
             <?php
-            echo Groupe::getArtistes();
+            echo Album::getAlbums();
             ?>
-        </ul>
+        </div>
     </div>
 </body>
 </html>
