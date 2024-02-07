@@ -23,7 +23,7 @@ function getAlbumsFilter() {
                 let a = document.createElement('a');
                 a.setAttribute('href', '#');
                 let img = document.createElement('img');
-                img.setAttribute('src', 'Data/images/' + albumJson.imageAlbum.replace("%", '%25'));
+                img.setAttribute('src', 'Data/images/' + encodeURIComponent(albumJson.imageAlbum));
                 img.setAttribute('alt', albumJson.titre);
                 let h2 = document.createElement('h2');
                 h2.textContent = albumJson.titre;

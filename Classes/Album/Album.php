@@ -106,9 +106,12 @@ class Album{
 
     public static function getAlbumsFiltre(string $recherche = '', int $artiste = null, string $annee = null, string $genre = null){
         $pdo = Database::getPdo();
+        error_log(print_r($recherche, true));
+        error_log(print_r($artiste, true));
         error_log(print_r($annee, true));
+        error_log(print_r($genre, true));
         $query = 'SELECT * FROM ALBUM WHERE 1=1';
-        if ($recherche != '') {
+        if ($recherche) {
             $query .= ' AND titre LIKE :recherche';
         }
         if ($artiste != null || $artiste) {
@@ -123,16 +126,16 @@ class Album{
         $query .= ' ORDER BY titre';
         $stmt = $pdo->prepare($query);
         if ($recherche) {
-            $stmt->bindParam(':recherche', '%' . $recherche . '%');
+            $stmt->bindValue(':recherche', '%' . $recherche . '%');
         }
         if ($artiste != null || $artiste) {
-            $stmt->bindParam(':artiste', $artiste);
+            $stmt->bindValue(':artiste', $artiste);
         }
-        if ($annee == 2003) {
-            $stmt->bindParam(':annee', $annee);
+        if ($annee != 'null') {
+            $stmt->bindValue(':annee', $annee);
         }
         if ($genre) {
-            $stmt->bindParam(':genre', $genre);
+            $stmt->bindValue(':genre', $genre);
         }
         error_log(print_r($stmt, true));
         $stmt->execute();
