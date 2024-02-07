@@ -45,7 +45,7 @@ class Groupe{
         $query = $pdo->prepare('SELECT * FROM GROUPE ORDER BY nom ASC');
         $query->execute();
         $groupes = $query->fetchAll();
-        $html = '<select name="artiste" id="artiste">
+        $html = '<select name="artiste" id="artiste" onchange="getAlbumsFilter()">
                     <option value="">Artiste</option>';
         foreach ($groupes as $groupe){
             $instance = new Groupe($groupe['idGroupe'], $groupe['nom']);

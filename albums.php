@@ -20,7 +20,7 @@ require_once 'Classes/Autoloader.php';
     <div class="content">
         <h1>Albums</h1>
         <div class="recherche">
-            <input type="search" name="search" id="search">
+            <input type="search" name="search_Albums" id="search_Albums" onchange="getAlbumsFilter()">
             <?php
                 echo Album::getAnneesOption();
                 echo Groupe::getArtistesOption();
@@ -32,5 +32,6 @@ require_once 'Classes/Autoloader.php';
             ?>
         </div>
     </div>
+    <script src="albums.js"></script>
 </body>
 </html>

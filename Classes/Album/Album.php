@@ -1,5 +1,6 @@
 <?php
 namespace Album;
+use Album\Database;
 
 class Album{
     protected $idAlbum;
@@ -50,12 +51,25 @@ class Album{
 
     public function render(){
         return '<li>
-                    <div>
+                    <div class="flex">
                         <a href="#">
-                            <img src="Data/images/'.$this->imageAlbum.'" alt="'.$this->titre.'">
+                            <img src="Data/images/'.str_replace("%","%25",$this->imageAlbum).'" alt="'.$this->titre.'">
                         </a>
+                        <h2>'.$this->titre.'</h2>
                     </div>
                 </li>';
+    }
+
+    public function toJson(){
+        return json_encode([
+            'idAlbum' => $this->idAlbum,
+            'idChanteur' => $this->idChanteur,
+            'idProducteur' => $this->idProducteur,
+            'titre' => $this->titre,
+            'annee' => $this->annee,
+            'imageAlbum' => $this->imageAlbum,
+            'entryID' => $this->entryID,
+        ]);
     }
 
     public static function getAlbums(int $limit=null){
@@ -64,15 +78,16 @@ class Album{
             $query = $pdo->prepare('SELECT * FROM ALBUM LIMIT '.$limit);
         }
         else{
-            $query = $pdo->prepare('SELECT * FROM ALBUM');
+            $query = $pdo->prepare('SELECT * FROM ALBUM ORDER BY titre');
         }
         $query->execute();
         $albums = $query->fetchAll();
-        $html = '';
+        $html = '<ul id="ul-albums">';
         foreach ($albums as $album){
             $instance = new Album($album['idAlbum'], $album['idChanteur'], $album['idProducteur'], $album['titre'], $album['annee'], $album['imageAlbum'], $album['entryID']);
             $html .= $instance->render();
         }
+        $html .= '</ul>';
         return $html;
     }
 
@@ -81,13 +96,55 @@ class Album{
         $query = $pdo->prepare('SELECT DISTINCT annee FROM ALBUM ORDER BY annee DESC');
         $query->execute();
         $annees = $query->fetchAll();
-        $html = '<select name="anne" id="anne">
+        $html = '<select name="annee" id="annee" onchange="getAlbumsFilter()">
                 <option value="">Année</option>';
         foreach ($annees as $annee){
             $html .= '<option value="'.$annee['annee'].'">'.$annee['annee'].'</option>';
         }
         return $html .= '</select>';
     }
+
+    public static function getAlbumsFiltre(string $recherche = '', int $artiste = null, string $annee = null, string $genre = null){
+        $pdo = Database::getPdo();
+        error_log(print_r($annee, true));
+        $query = 'SELECT * FROM ALBUM WHERE 1=1';
+        if ($recherche != '') {
+            $query .= ' AND titre LIKE :recherche';
+        }
+        if ($artiste != null || $artiste) {
+            $query .= ' AND idChanteur = (SELECT idGroupe FROM GROUPE WHERE idGroupe = :artiste)';
+        }
+        if ($annee != 'null') {
+            $query .= ' AND annee = :annee';
+        }
+        if ($genre != null) {
+            $query .= ' AND idAlbum IN (SELECT idAlbum FROM ALBUMGENRES WHERE idGenre = (SELECT idGenre FROM GENRE WHERE nom = :genre))';
+        }
+        $query .= ' ORDER BY titre';
+        $stmt = $pdo->prepare($query);
+        if ($recherche) {
+            $stmt->bindParam(':recherche', '%' . $recherche . '%');
+        }
+        if ($artiste != null || $artiste) {
+            $stmt->bindParam(':artiste', $artiste);
+        }
+        if ($annee == 2003) {
+            $stmt->bindParam(':annee', $annee);
+        }
+        if ($genre) {
+            $stmt->bindParam(':genre', $genre);
+        }
+        error_log(print_r($stmt, true));
+        $stmt->execute();
+        $albums = $stmt->fetchAll();
+        $newAlbums = array();
+        foreach ($albums as $album) {
+            $instance = new Album($album['idAlbum'], $album['idChanteur'], $album['idProducteur'], $album['titre'], $album['annee'], $album['imageAlbum'], $album['entryID']);
+            $newAlbums[] = $instance->toJson();
+        }
+        return $newAlbums;
+    }
+
 
 }
 
