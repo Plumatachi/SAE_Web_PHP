@@ -3,11 +3,11 @@ function getAlbumsFilter() {
     console.log('artiste',artiste);
     let recherche = document.getElementById('search_Albums').value == '' ? '' : document.getElementById('search_Albums').value;
     console.log('recherche',recherche);
-    // $genre = document.getElementById('genre').value
+    let genre = document.getElementById('genre').value ?? null;
     let annee = document.getElementById('annee').value == '' ? null : document.getElementById('annee').value;
     console.log('annee',annee);
-    // let url = `majAlbums.php?recherche=${recherche}&artiste=${artiste}&annee=${annee}&genre=${genre}`;
-    let url = `majAlbums.php?recherche=${recherche}&artiste=${artiste}&annee=${annee}`;
+    let url = `majAlbums.php?recherche=${recherche}&artiste=${artiste}&annee=${annee}&genre=${genre}`;
+    // let url = `majAlbums.php?recherche=${recherche}&artiste=${artiste}&annee=${annee}`;
     
     fetch(url)
         .then(response => response.json())

@@ -3,6 +3,7 @@ require_once 'Classes/Autoloader.php';
     Autoloader::register();
     use Album\Album;
     use Album\Groupe;
+    use Album\Genre;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -24,6 +25,7 @@ require_once 'Classes/Autoloader.php';
             <?php
                 echo Album::getAnneesOption();
                 echo Groupe::getArtistesOption();
+                echo Genre::getGenresOption();
             ?>
         </div>
         <div class="albums">

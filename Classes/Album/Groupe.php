@@ -46,7 +46,7 @@ class Groupe{
         $query->execute();
         $groupes = $query->fetchAll();
         $html = '<select name="artiste" id="artiste" onchange="getAlbumsFilter()">
-                    <option value="">Artiste</option>';
+                    <option value="-1">Artiste</option>';
         foreach ($groupes as $groupe){
             $instance = new Groupe($groupe['idGroupe'], $groupe['nom']);
             $html .= '<option value="'.$instance->getIdGroupe().'">'.$instance->getNom().'</option>';

@@ -104,7 +104,7 @@ class Album{
         return $html .= '</select>';
     }
 
-    public static function getAlbumsFiltre(string $recherche = '', int $artiste = null, string $annee = null, string $genre = null){
+    public static function getAlbumsFiltre(string $recherche = '', int $artiste = -1, string $annee = null, int $genre = -1){
         $pdo = Database::getPdo();
         error_log(print_r($recherche, true));
         error_log(print_r($artiste, true));
@@ -114,37 +114,40 @@ class Album{
         if ($recherche) {
             $query .= ' AND titre LIKE :recherche';
         }
-        if ($artiste != null || $artiste) {
+        if ($artiste != -1) {
             $query .= ' AND idChanteur = (SELECT idGroupe FROM GROUPE WHERE idGroupe = :artiste)';
         }
         if ($annee != 'null') {
             $query .= ' AND annee = :annee';
         }
-        if ($genre != null) {
-            $query .= ' AND idAlbum IN (SELECT idAlbum FROM ALBUMGENRES WHERE idGenre = (SELECT idGenre FROM GENRE WHERE nom = :genre))';
+        if ($genre != -1) {
+            $query .= ' AND idAlbum IN (SELECT idAlbum FROM ALBUMGENRES WHERE idGenre = :genre)';
         }
         $query .= ' ORDER BY titre';
         $stmt = $pdo->prepare($query);
         if ($recherche) {
             $stmt->bindValue(':recherche', '%' . $recherche . '%');
         }
-        if ($artiste != null || $artiste) {
+        if ($artiste != -1)  {
             $stmt->bindValue(':artiste', $artiste);
         }
         if ($annee != 'null') {
             $stmt->bindValue(':annee', $annee);
         }
-        if ($genre) {
+        if ($genre != -1) {
             $stmt->bindValue(':genre', $genre);
         }
         error_log(print_r($stmt, true));
         $stmt->execute();
         $albums = $stmt->fetchAll();
+        error_log(print_r('aled',true));
+        error_log(print_r($albums,true));
         $newAlbums = array();
         foreach ($albums as $album) {
             $instance = new Album($album['idAlbum'], $album['idChanteur'], $album['idProducteur'], $album['titre'], $album['annee'], $album['imageAlbum'], $album['entryID']);
             $newAlbums[] = $instance->toJson();
         }
+        error_log(print_r($newAlbums,true));
         return $newAlbums;
     }
 
