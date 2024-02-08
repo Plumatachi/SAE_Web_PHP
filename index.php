@@ -11,6 +11,7 @@ require_once 'Classes/Autoloader.php';
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <?php
