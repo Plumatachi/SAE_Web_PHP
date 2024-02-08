@@ -12,6 +12,7 @@ require_once 'Classes/Autoloader.php';
     <title>Document</title>
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="albums.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 </head>
 <body>
     <?php

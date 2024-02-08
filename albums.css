@@ -13,9 +13,14 @@ div.albums {
     align-items: center;
 }
 
-div.albums img{
+div.albums img {
     width: 20vw;
     height: 20vw;
     border-radius: 20px;
     margin: 1vh 1vw;
+}
+
+h1 {
+    margin-right: 0em;
+    margin-left: 0em;
 }
