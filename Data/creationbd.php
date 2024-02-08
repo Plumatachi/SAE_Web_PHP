@@ -39,6 +39,20 @@ switch ($argv[1]) {
                 FOREIGN KEY(idAlbum) REFERENCES ALBUM(idAlbum),
                 FOREIGN KEY(idGenre) REFERENCES GENRE(idGenre)
             );
+            CREATE TABLE IF NOT EXISTS UTILISATEUR (
+                idUtilisateur INTEGER NOT NULL PRIMARY KEY,
+                nom           TEXT NOT NULL,
+                prenom        TEXT NOT NULL,
+                email         TEXT NOT NULL,
+                motDePasse    TEXT NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS CHANSON (
+                idChanson     INTEGER NOT NULL PRIMARY KEY,
+                idAlbum       INTEGER NOT NULL,
+                titre         TEXT NOT NULL,
+                PRIMARY KEY(idChanson, idAlbum),
+                FOREIGN KEY(idAlbum) REFERENCES ALBUM(idAlbum)
+            );
         EOF;
         break;
 

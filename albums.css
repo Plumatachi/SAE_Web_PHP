@@ -6,13 +6,6 @@ div.content {
     justify-content: space-evenly;
 }
 
-div.albums {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
 div.albums img {
     width: 20vw;
     height: 20vw;
@@ -20,7 +13,20 @@ div.albums img {
     margin: 1vh 1vw;
 }
 
-h1 {
-    margin-right: 0em;
-    margin-left: 0em;
+div.albums h2 {
+    color: white;
+}
+
+div.albums div.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+div.albums ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
 }

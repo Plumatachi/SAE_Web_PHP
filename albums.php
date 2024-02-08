@@ -3,6 +3,7 @@ require_once 'Classes/Autoloader.php';
     Autoloader::register();
     use Album\Album;
     use Album\Groupe;
+    use Album\Genre;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,10 +22,11 @@ require_once 'Classes/Autoloader.php';
     <div class="content">
         <h1>Albums</h1>
         <div class="recherche">
-            <input type="search" name="search" id="search">
+            <input type="search" name="search_Albums" id="search_Albums" onchange="getAlbumsFilter()">
             <?php
                 echo Album::getAnneesOption();
                 echo Groupe::getArtistesOption();
+                echo Genre::getGenresOption();
             ?>
         </div>
         <div class="albums">
@@ -33,5 +35,6 @@ require_once 'Classes/Autoloader.php';
             ?>
         </div>
     </div>
+    <script src="albums.js"></script>
 </body>
 </html>
