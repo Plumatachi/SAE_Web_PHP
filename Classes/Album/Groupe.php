@@ -54,5 +54,17 @@ class Groupe{
         return $html .='</select>';
     }
 
+    public static function getNomArtiste(int $idArt) {
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT * FROM GROUPE WHERE idGroupe = :idArt');
+        $query->bindValue(':idArt', $idArt);
+        $query->execute();
+        $groupe = $query->fetchAll();
+        $nom = '';
+        $instance = new Groupe($groupe[0]['idGroupe'], $groupe[0]['nom']);
+        $nom .= $instance->getNom();
+        return $nom;
+    }
+
 }
 ?>

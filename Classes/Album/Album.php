@@ -1,6 +1,8 @@
 <?php
 namespace Album;
 use Album\Database;
+use Album\Groupe;
+use Album\Genre;
 
 class Album{
     protected $idAlbum;
@@ -151,6 +153,23 @@ class Album{
         return $newAlbums;
     }
 
+    public static function getDetailAlbum(){
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT * FROM ALBUM WHERE idAlbum = 3');
+        $query->execute();
+        $album = $query->fetchAll();
+        $instance = new Album($album[0]['idAlbum'], $album[0]['idChanteur'], $album[0]['idProducteur'], $album[0]['titre'], $album[0]['annee'], $album[0]['imageAlbum'], $album[0]['entryID']);
+        $html = '<div class="partie-gauche">
+                    <h1>'.$instance->getTitre().'</h1>
+                    <img src="Data/images/'.str_replace("%","%25",$instance->getImage()).'" alt="'.$instance->getTitre().'">
+                </div>
+                <div class="partie-droite">
+                    <p>Artiste : '.Groupe::getNomArtiste($instance->getIdChanteur()).'</p>
+                    <p>Genres : '."(...)".'</p>
+                    <p>Année : '.$instance->getAnnee().'</p>
+                </div>';
+        return $html;
+    }
 
 }
 
