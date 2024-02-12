@@ -139,17 +139,13 @@ class Album{
         if ($genre != -1) {
             $stmt->bindValue(':genre', $genre);
         }
-        error_log(print_r($stmt, true));
         $stmt->execute();
         $albums = $stmt->fetchAll();
-        error_log(print_r('aled',true));
-        error_log(print_r($albums,true));
         $newAlbums = array();
         foreach ($albums as $album) {
             $instance = new Album($album['idAlbum'], $album['idChanteur'], $album['idProducteur'], $album['titre'], $album['annee'], $album['imageAlbum'], $album['entryID']);
             $newAlbums[] = $instance->toJson();
         }
-        error_log(print_r($newAlbums,true));
         return $newAlbums;
     }
 

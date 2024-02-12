@@ -10,7 +10,6 @@ if (isset($_GET['recherche']) || isset($_GET['artiste']) || isset($_GET['annee']
     $annee = $_GET['annee'] ?? NULL;
     $genre = (int) $_GET['genre'] ?? -1;
     $albums = Album::getAlbumsFiltre($recherche, $artiste, $annee, $genre);
-    error_log(print_r($albums,true));
     echo json_encode($albums);
 }
 ?>
