@@ -12,6 +12,7 @@ require_once 'Classes/Autoloader.php';
     <title>Document</title>
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
 </head>
 <body>
     <?php
@@ -19,11 +20,13 @@ require_once 'Classes/Autoloader.php';
     ?>
     <div class="albums">
         <h1>Albums publiés</h1>
-        <ul>
-            <?php
-            echo Album::getAlbums(5);
-            ?>
-        </ul>
+        <div id="album-rotator">
+            <div id="album-rotator-holder">
+                    <?php
+                    echo Album::getAlbums();
+                    ?>
+            </div>
+        </div>
     </div>
     <div class="artistes">
         <h1>Artistes</h1>
