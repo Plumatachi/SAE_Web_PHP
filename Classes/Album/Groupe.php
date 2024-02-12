@@ -60,9 +60,8 @@ class Groupe{
         $query->bindValue(':idArt', $idArt);
         $query->execute();
         $groupe = $query->fetchAll();
-        $nom = '';
         $instance = new Groupe($groupe[0]['idGroupe'], $groupe[0]['nom']);
-        $nom .= $instance->getNom();
+        $nom = $instance->getNom();
         return $nom;
     }
 

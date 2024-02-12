@@ -45,6 +45,17 @@ class Genre{
         }
         return $html .='</select>';
     }
+
+    public static function getNomGenreById(int $id) {
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT * FROM GENRE WHERE idGenre = :idGenre');
+        $query->bindValue(':idGenre', $id);
+        $query->execute();
+        $genre = $query->fetchAll();
+        $instance = new Genre($genre[0]['idGenre'], $genre[0]['nom']);
+        $nom = $instance->getNom();
+        return $nom;
+    }
 }
 
 

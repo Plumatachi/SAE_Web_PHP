@@ -149,9 +149,23 @@ class Album{
         return $newAlbums;
     }
 
-    public static function getDetailAlbum(){
+    public static function getGenresAlbums(int $idAlbum) {
         $pdo = Database::getPdo();
-        $query = $pdo->prepare('SELECT * FROM ALBUM WHERE idAlbum = 3');
+        $query = $pdo->prepare('SELECT idGenre FROM AlbumGenres WHERE idAlbum = :idAlbum');
+        $query->bindValue(':idAlbum', $idAlbum);
+        $query->execute();
+        $idsGenres = $query->fetchAll();
+        $res = '';
+        foreach ($idsGenres as $idGenre) {
+            $res .= Genre::getNomGenreById($idGenre[0]) . ", ";
+        }
+        return $res;
+    }
+
+    public static function getDetailAlbum(int $idAlbum){
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT * FROM ALBUM WHERE idAlbum = :idAlbum');
+        $query->bindValue(':idAlbum', $idAlbum);
         $query->execute();
         $album = $query->fetchAll();
         $instance = new Album($album[0]['idAlbum'], $album[0]['idChanteur'], $album[0]['idProducteur'], $album[0]['titre'], $album[0]['annee'], $album[0]['imageAlbum'], $album[0]['entryID']);
@@ -161,7 +175,7 @@ class Album{
                 </div>
                 <div class="partie-droite">
                     <p>Artiste : '.Groupe::getNomArtiste($instance->getIdChanteur()).'</p>
-                    <p>Genres : '."(...)".'</p>
+                    <p>Genres : '.$instance->getGenresAlbums($instance->getIdAlbum()).'</p>
                     <p>Année : '.$instance->getAnnee().'</p>
                 </div>';
         return $html;
