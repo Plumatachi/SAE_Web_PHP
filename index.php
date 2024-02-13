@@ -30,11 +30,15 @@ require_once 'Classes/Autoloader.php';
     </div>
     <div class="artistes">
         <h1>Artistes</h1>
-        <ul>
-            <?php
-            echo Groupe::getArtistes();
-            ?>
-        </ul>
+        <div id="album2-rotator">
+            <div id="album2-rotator-holder">
+                <ul>
+                    <?php
+                    echo Groupe::getArtistes();
+                    ?>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html>
