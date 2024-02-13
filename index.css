@@ -1,16 +1,19 @@
 
 div.albums ul{
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     align-items: center;
     flex-wrap: nowrap;
     list-style: none;
 }
 
-div.albums div{
+div.album-item{
     background-color: #1E1E1E;
     border-radius: 20px;
     padding: 1.5vh 1.5vw;
+}
+div.album-item img{
+    height: 30vh;
 }
 
 div.artistes ul{
@@ -29,4 +32,140 @@ div.artistes div{
 
 .groupe{
     color: white;
+}
+
+
+/* Carrousel */
+.title {
+    /* font-weight: 0.4em; */
+    display: inline-block;
+    width: 100%;
+}
+
+/* Carrousel Artiste */
+.album-item {
+    word-break: keep-all;
+    background: black;
+    box-shadow: 0 2px 30px rgba(0,0,0,0.5);
+    position: relative;
+    width: 250px;
+    -webkit-user-drag: none;
+    height: 40vh;
+    user-select: none;
+    border-radius: 10px;
+    overflow: hidden;
+    display: inline-block;
+    margin: 0 3rem 0 0;
+    transition: all 0.2s ease-out;
+    transform: scale(1);
+}
+.album-item:hover {
+    transform: scale(1.02);
+}
+#album-rotator {
+    width: 1000px;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    word-break: keep-all;
+    padding: 2rem 0;
+}
+#album-rotator-holder {
+    position: relative;
+    user-select: none;
+    will-change: transform;
+    /* transition: all 0.01s ease-out; */
+    /* transition: all 0.01s linear; */
+}
+#album-rotator:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(-90deg, #161231 5%, transparent 40%);
+}
+.album-details {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+    padding: 1rem;
+    white-space: initial;
+    float: left;
+    box-sizing: border-box;
+    color: white;
+    height: 100%;
+    /* font-size: 2.5rem; */
+    font-weight: 600;
+    z-index: 99;
+}
+
+/* Carrousel Artiste */
+.album2-item {
+    word-break: keep-all;
+    background: black;
+    box-shadow: 0 2px 30px rgba(0,0,0,0.5);
+    position: relative;
+    width: 250px;
+    -webkit-user-drag: none;
+    height: 40vh;
+    user-select: none;
+    border-radius: 10px;
+    overflow: hidden;
+    display: inline-block;
+    margin: 0 3rem 0 0;
+    transition: all 0.2s ease-out;
+    transform: scale(1);
+}
+.album2-item:hover {
+    transform: scale(1.02);
+}
+#album2-rotator {
+    width: 1000px;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    word-break: keep-all;
+    padding: 2rem 0;
+}
+#album2-rotator-holder {
+    position: relative;
+    user-select: none;
+    will-change: transform;
+    /* transition: all 0.01s ease-out; */
+    /* transition: all 0.01s linear; */
+}
+#album2-rotator:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(-90deg, #161231 5%, transparent 40%);
+}
+.album2-details {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+    padding: 1rem;
+    white-space: initial;
+    float: left;
+    box-sizing: border-box;
+    color: white;
+    height: 100%;
+    /* font-size: 2.5rem; */
+    font-weight: 600;
+    z-index: 99;
 }
