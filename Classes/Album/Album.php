@@ -174,9 +174,9 @@ class Album{
                     <img src="Data/images/'.str_replace("%","%25",$instance->getImage()).'" alt="'.$instance->getTitre().'">
                 </div>
                 <div class="partie-droite">
-                    <p>Artiste : '.Groupe::getNomArtiste($instance->getIdChanteur()).'</p>
-                    <p>Genres : '.$instance->getGenresAlbums($instance->getIdAlbum()).'</p>
-                    <p>Année : '.$instance->getAnnee().'</p>
+                    <p><strong>Artiste :</strong> '.Groupe::getNomArtiste($instance->getIdChanteur()).'</p>
+                    <p><strong>Genres :</strong> '.$instance->getGenresAlbums($instance->getIdAlbum()).'</p>
+                    <p><strong>Année :</strong> '.$instance->getAnnee().'</p>
                 </div>';
         return $html;
     }

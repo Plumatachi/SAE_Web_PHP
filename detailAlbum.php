@@ -24,6 +24,5 @@ require_once 'Classes/Autoloader.php';
         echo Album::getDetailAlbum(2);
         ?>
     </div>
-    <script src="albums.js"></script>
 </body>
 </html>
