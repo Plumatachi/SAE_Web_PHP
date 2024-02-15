@@ -39,31 +39,74 @@ switch ($argv[1]) {
                 FOREIGN KEY(idAlbum) REFERENCES ALBUM(idAlbum),
                 FOREIGN KEY(idGenre) REFERENCES GENRE(idGenre)
             );
+            CREATE TABLE IF NOT EXISTS ROLE (
+                idRole        INTEGER NOT NULL PRIMARY KEY,
+                nomRole       TEXT NOT NULL
+            );
             CREATE TABLE IF NOT EXISTS UTILISATEUR (
-                idUtilisateur INTEGER NOT NULL PRIMARY KEY,
+                idRole        INTEGER NOT NULL,
                 nom           TEXT NOT NULL,
                 prenom        TEXT NOT NULL,
-                email         TEXT NOT NULL,
-                motDePasse    TEXT NOT NULL
+                email         TEXT NOT NULL PRIMARY KEY,
+                pseudo        TEXT NOT NULL,
+                motDePasse    TEXT NOT NULL,
+                FOREIGN KEY(idRole) REFERENCES ROLE(idRole)
             );
             CREATE TABLE IF NOT EXISTS CHANSON (
-                idChanson     INTEGER NOT NULL PRIMARY KEY,
+                idChanson     INTEGER NOT NULL,
                 idAlbum       INTEGER NOT NULL,
                 titre         TEXT NOT NULL,
                 PRIMARY KEY(idChanson, idAlbum),
                 FOREIGN KEY(idAlbum) REFERENCES ALBUM(idAlbum)
             );
+            CREATE TABLE IF NOT EXISTS PlaylistLike (
+                idUtilisateur  INTEGER NOT NULL,
+                idChanson      INTEGER NOT NULL,
+                PRIMARY KEY (idUtilisateur, idChanson),
+                FOREIGN KEY (idUtilisateur) REFERENCES UTILISATEUR(idUtilisateur),
+                FOREIGN KEY (idChanson) REFERENCES Chanson(idChanson)
+            );
+            CREATE TABLE IF NOT EXISTS AlbumsLike (
+                idUtilisateur  INTEGER NOT NULL,
+                idAlbum        INTEGER NOT NULL,
+                PRIMARY KEY (idUtilisateur, idAlbum),
+                FOREIGN KEY (idUtilisateur) REFERENCES UTILISATEUR(idUtilisateur),
+                FOREIGN KEY (idAlbum) REFERENCES Album(idAlbum)
+            );
+            CREATE TABLE IF NOT EXISTS Notation (
+                idUtilisateur  INTEGER NOT NULL,
+                idChanson      INTEGER NOT NULL,
+                Note           INTEGER NOT NULL,
+                PRIMARY KEY (idUtilisateur, idChanson),
+                FOREIGN KEY (idUtilisateur) REFERENCES UTILISATEUR(idUtilisateur),
+                FOREIGN KEY (idChanson) REFERENCES Chanson(idChanson)
+            );
         EOF;
+        try {
+            $pdo->exec($query);
+        } catch (PDOException $e) {
+            var_dump($e->getMessage());
+        }
         break;
 
     case 'delete-table':
         echo '→ Go delete tables' . PHP_EOL;
         $query =<<<EOF
-            DROP TABLE ALBUMGENRES;
-            DROP TABLE GENRE;
-            DROP TABLE ALBUM;
-            DROP TABLE GROUPE;
+            DROP TABLE IF EXISTS PlaylistLike;
+            DROP TABLE IF EXISTS AlbumsLike;
+            DROP TABLE IF EXISTS Notation;
+            DROP TABLE IF EXISTS UTILISATEUR;
+            DROP TABLE IF EXISTS CHANSON;
+            DROP TABLE IF EXISTS ALBUMGENRES;
+            DROP TABLE IF EXISTS GENRE;
+            DROP TABLE IF EXISTS ALBUM;
+            DROP TABLE IF EXISTS GROUPE;        
         EOF;
+        try {
+            $pdo->exec($query);
+        } catch (PDOException $e) {
+            var_dump($e->getMessage());
+        }
         break;
 
     case 'load-data':
@@ -71,7 +114,6 @@ switch ($argv[1]) {
         $yamlContents = file_get_contents('Data/extrait.yml');
         $data = Spyc::YAMLLoadString($yamlContents);
         foreach ($data as $album) {
-            
             $idartiste = $pdo->query('SELECT idGroupe FROM GROUPE WHERE nom = "'.$album['by'].'"')->fetchColumn();
             if (!$idartiste){
                 $maxIdGroupe = $pdo->query('SELECT MAX(idGroupe) FROM GROUPE')->fetchColumn() + 1;
@@ -130,19 +172,46 @@ switch ($argv[1]) {
                 $stmt->bindParam(2, $idGenre, PDO::PARAM_INT);
                 $stmt->execute();
             }
+            if (isset($album['chansons']) && is_array($album['chansons'])) {
+                foreach ($album['chansons'] as $chanson) {
+                    $idChanson = $pdo->query('SELECT idChanson FROM CHANSON WHERE titre = "'.$chanson.'"')->fetchColumn();
+                    if(!$idChanson){
+                        $maxIdChanson = $pdo->query('SELECT MAX(idChanson) FROM CHANSON')->fetchColumn() + 1;
+                        $query = 'INSERT INTO CHANSON (idChanson,idAlbum, titre) VALUES (?, ?, ?)';
+                        $stmt = $pdo->prepare($query);
+                        $stmt->bindParam(1, $maxIdChanson, PDO::PARAM_INT);
+                        $stmt->bindParam(2, $idAlbum, PDO::PARAM_INT);
+                        $stmt->bindParam(3, $chanson, PDO::PARAM_STR);
+                        $stmt->execute();
+                        $query = '';
+                    }
+                }
+            }
+            $idRole = $pdo->query('SELECT idRole FROM ROLE WHERE nomRole = "admin"')->fetchColumn();
+            if (!$idRole){
+                $idRole = 1;
+                $name = 'admin';
+                $query = 'INSERT INTO `ROLE` (idRole, nomRole) VALUES (?,?)';
+                $stmt = $pdo->prepare($query);
+                $stmt->bindParam(1, $idRole, PDO::PARAM_INT);
+                $stmt->bindParam(2, $name, PDO::PARAM_STR);
+                $stmt->execute();
+            }
+            $idrole = $pdo->query('SELECT idRole FROM ROLE WHERE nomRole = "user"')->fetchColumn();
+            if (!$idrole){
+                $idRole = 2;
+                $name = 'user';
+                $query = 'INSERT INTO `ROLE` (idRole, nomRole) VALUES (?,?)';
+                $stmt = $pdo->prepare($query);
+                $stmt->bindParam(1, $idRole, PDO::PARAM_INT);
+                $stmt->bindParam(2, $name, PDO::PARAM_STR);
+                $stmt->execute();
+            }
         }
         break;
-    
+
     default:
         echo 'No action defined 🙀'.PHP_EOL;
         break;
-}
-
-if (isset($query)) {
-    try {
-        $pdo->exec($query);
-    } catch (PDOException $e) {
-        var_dump($e->getMessage());
-    }
 }
 ?>

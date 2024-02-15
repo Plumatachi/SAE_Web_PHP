@@ -3,6 +3,7 @@ require_once 'Classes/Autoloader.php';
     Autoloader::register();
     use Album\Album;
     use Album\Groupe;
+    use Album\Utilisateur;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
