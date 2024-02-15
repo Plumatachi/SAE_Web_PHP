@@ -76,6 +76,36 @@ class Album{
         ]);
     }
 
+    public static function createAlbum(string $titre, int $idChanteur, int $idProducteur, int $annee, string $imageAlbum, array $genres, int $entryID=1){
+        $pdo = Database::getPdo();
+        $maxIdAlbum = $pdo->query('SELECT MAX(idAlbum) FROM ALBUM')->fetchColumn() + 1;
+        $query = 'INSERT INTO ALBUM (idAlbum, idChanteur, idProducteur, titre, annee, imageAlbum, entryID) VALUES (:idAlbum, :idChanteur, :idProducteur, :titre, :annee, :imageAlbum, :entryID)';
+        $statement = $pdo->prepare($query);
+        $statement->bindValue(':idAlbum', $maxIdAlbum);
+        $statement->bindValue(':idChanteur', $idChanteur);
+        $statement->bindValue(':idProducteur', $idProducteur);
+        $statement->bindValue(':titre', $titre);
+        $statement->bindValue(':annee', $annee);
+        $statement->bindValue(':imageAlbum', $imageAlbum);
+        $statement->bindValue(':entryID', $entryID);
+        $statement->execute();
+        foreach ($genres as $genreNom){
+            $query = 'SELECT idGenre FROM GENRE WHERE nom = :nom';
+            $statement = $pdo->prepare($query);
+            $statement->bindValue(':nom', $genreNom);
+            $statement->execute();
+            $genreId = $statement->fetchColumn();
+
+            $query = 'INSERT INTO ALBUMGENRES (idAlbum, idGenre) VALUES (:idAlbum, :idGenre)';
+            $statement = $pdo->prepare($query);
+            $statement->bindValue(':idAlbum', $maxIdAlbum);
+            $statement->bindValue(':idGenre', $genreId);
+            $statement->execute();
+        }
+    }
+
+    
+
     public static function getAlbums(int $limit=null){
         $pdo = Database::getPdo();
         if ($limit){
@@ -151,6 +181,30 @@ class Album{
         return $newAlbums;
     }
 
+    public static function createAlbumForm(): string{
+        $html = '<form enctype="multipart/form-data" id="album-form" action="enregistreAlbum.php" method="post">
+                    <div class="form-group">
+                        <label for="titre">Titre</label>
+                        <input type="text" name="titre" id="titre" required>
+                        <label for="annee">Année</label>
+                        <input type="number" name="annee" id="annee" value="2022" required>
+                        <label for="imageAlbum">Image</label>
+                        <input type="file" name="imageAlbum" id="imageAlbum" required>
+                        <label for="genre">Genre</label>
+                        <input type="hidden" name="genres" id="genres">';
+            $html .= Genre::getGenresOptionadd();
+            $html .= '<label for="entryID">entryID</label>
+                        <input type="number" name="entryID" id="entryID" required>
+                    </div>
+                    <div>
+                    <label for="artiste">Chanteur</label>';
+            $html .= Groupe::getArtistesOption();
+            $html .= '<label for="producteur">Producteur</label>';
+            $html .= Groupe::getProducteurOption();
+            $html .= '</div>';
+            $html .= '<input type="submit" value="Ajouter">
+                </form>';
+  
     public static function getGenresAlbums(int $idAlbum) {
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT idGenre FROM AlbumGenres WHERE idAlbum = :idAlbum');
