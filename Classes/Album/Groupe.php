@@ -69,5 +69,17 @@ class Groupe{
         return $nom;
     }
 
+
+    public static function getArtisteById(int $idArt) {
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT * FROM GROUPE WHERE idGroupe = :idArt');
+        $query->bindValue(':idArt', $idArt);
+        $query->execute();
+        $groupe = $query->fetchAll();
+        $instance = new Groupe($groupe[0]['idGroupe'], $groupe[0]['nom']);
+        $html = '<h2>'.$instance->nom.'</h2>
+                <img src="https://picsum.photos/100" alt="'.$instance->nom.'">';
+        return $html;
+    }
 }
 ?>

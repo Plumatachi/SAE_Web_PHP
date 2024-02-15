@@ -183,6 +183,21 @@ class Album{
         return $html;
     }
 
+    public static function getAlbumsByArtiste(int $artiste){
+        $pdo = Database::getPdo();
+        $stmt = $pdo->prepare('SELECT * FROM ALBUM WHERE idChanteur=:artiste');
+        $stmt->bindValue(':artiste', $artiste);
+        $stmt->execute();
+        $albums = $stmt->fetchAll();
+        $html = '<ul id="ul-albums">';
+        foreach ($albums as $album){
+            $instance = new Album($album['idAlbum'], $album['idChanteur'], $album['idProducteur'], $album['titre'], $album['annee'], $album['imageAlbum'], $album['entryID']);
+            $html .= $instance->render();
+        }
+        $html .= '</ul>';
+        return $html;
+    }
+
 }
 
 ?>
