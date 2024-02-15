@@ -71,5 +71,9 @@ class Utilisateur{
             exit();
         }
     }
+
+    public static function deconnexion(){
+        session_destroy();
+    }
 }
 ?>

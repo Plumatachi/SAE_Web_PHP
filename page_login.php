@@ -18,7 +18,7 @@
                 exit();
             }
         ?>
-        <form action="index.php" method="POST">
+        <form action="page_login.php" method="POST">
         <h1>Connectez-vous</h1>
             <p>Nom d'utilisateur</p>
             <input type="text" id="pseudo" name="pseudo">
