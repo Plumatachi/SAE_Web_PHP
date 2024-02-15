@@ -23,7 +23,7 @@
                 exit();
             }
         ?>
-        <form action="page_login.php" method="POST">
+        <form action="" method="POST">
             <h1>Inscrivez-vous</h1>
             <p>Nom</p>
             <input type="text" id="nom" name="nom">

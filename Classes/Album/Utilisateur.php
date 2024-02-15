@@ -56,6 +56,10 @@ class Utilisateur{
         $stmt->bindParam(5, $pseudo, PDO::PARAM_STR);
         $stmt->bindParam(6, $mdp, PDO::PARAM_STR);
         $stmt->execute();
+
+        $_SESSION['pseudo'] = $pseudo;
+        header("Location: index.php");
+        exit();
     }
 
     public static function connexion($pseudo, $mdp){
@@ -68,12 +72,14 @@ class Utilisateur{
         }
         if ($mdpPDO == $mdp){
             $_SESSION['pseudo'] = $pseudo;
+            header("Location: index.php");
             exit();
         }
     }
 
     public static function deconnexion(){
         session_destroy();
+        header("Location: index.php");
     }
 }
 ?>

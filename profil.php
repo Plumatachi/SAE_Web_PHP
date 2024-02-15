@@ -9,7 +9,7 @@
             require_once 'Classes/Autoloader.php';
             Autoloader::register();
             use Album\Utilisateur;
-            include 'nav.php'; 
+            include 'nav.php';
             echo '<h1>' . $_SESSION['pseudo'] . '</h1>';
 
             if (isset($_POST['submit'])){
@@ -17,7 +17,7 @@
                 exit();
             }
         ?>
-        <form action="profil.php" method="POST">
+        <form action="" method="POST">
             <button type="submit" name="submit">Se déconnecter</button>
         </form>
     </body>
