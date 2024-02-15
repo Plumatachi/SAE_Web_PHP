@@ -58,6 +58,7 @@ class Genre{
             $html .= '<option value="'.$instance->getIdGenre().'">'.$instance->getNom().'</option>';
         }
         return $html .='</select>';
+    }
       
     public static function getNomGenreById(int $id) {
         $pdo = Database::getPdo();

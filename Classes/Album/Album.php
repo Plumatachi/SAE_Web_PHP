@@ -204,6 +204,7 @@ class Album{
             $html .= '</div>';
             $html .= '<input type="submit" value="Ajouter">
                 </form>';
+    }
   
     public static function getGenresAlbums(int $idAlbum) {
         $pdo = Database::getPdo();
