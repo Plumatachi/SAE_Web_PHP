@@ -53,11 +53,13 @@ class Album{
 
     public function render(){
         return '<li>
-                    <div class="flex">
-                        <a href="detailAlbum.php?id='.$this->idAlbum.'">
-                            <img src="Data/images/'.str_replace("%","%25",$this->imageAlbum).'" alt="'.$this->titre.'">
-                        </a>
-                        <h2>'.$this->titre.'</h2>
+                    <div class="flex album-item">
+                        <div class="album-details">
+                            <a href="detailAlbum.php?id='.$this->idAlbum.'">
+                                <img src="Data/images/'.str_replace("%","%25",$this->imageAlbum).'" alt="'.$this->titre.'">
+                            </a>
+                            <h2 class="title">'.$this->titre.'</h2>
+                        </div>
                     </div>
                 </li>';
     }

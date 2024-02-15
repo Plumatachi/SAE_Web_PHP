@@ -20,16 +20,20 @@ class Groupe{
 
     public function render(){
         return '<li>
-                    <div class="groupe">
-                        <img src="https://picsum.photos/100" alt="'.$this->nom.'">
-                        <h2>'.$this->nom.'</h2>
+                    <div class="flex album2-item">
+                        <a class="album2-details">
+                            <div class="groupe">
+                                <img src="https://picsum.photos/100" alt="'.$this->nom.'">
+                                <h2>'.$this->nom.'</h2>
+                            </div>
+                        </a>
                     </div>
                 </li>';
     }
 
     public static function getArtistes(){
         $pdo = Database::getPdo();
-        $query = $pdo->prepare('SELECT * FROM GROUPE LIMIT 5');
+        $query = $pdo->prepare('SELECT * FROM GROUPE');
         $query->execute();
         $groupes = $query->fetchAll();
         $html = '';
