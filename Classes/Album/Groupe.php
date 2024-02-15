@@ -44,7 +44,7 @@ class Groupe{
 
     public static function getArtistes(){
         $pdo = Database::getPdo();
-        $query = $pdo->prepare('SELECT * FROM GROUPE');
+        $query = $pdo->prepare('SELECT * FROM GROUPE ORDER BY nom ASC');
         $query->execute();
         $groupes = $query->fetchAll();
         $html = '<ul id="ul-artistes">';
@@ -98,7 +98,7 @@ class Groupe{
 
     public static function getArtisteFilter($recherche){
         $pdo = Database::getPdo();
-        $query = $pdo->prepare('SELECT * FROM GROUPE WHERE nom LIKE :recherche');
+        $query = $pdo->prepare('SELECT * FROM GROUPE WHERE nom LIKE :recherche ORDER BY nom ASC');
         $query->bindValue(':recherche', '%'.$recherche.'%');
         $query->execute();
         $groupes = $query->fetchAll();
