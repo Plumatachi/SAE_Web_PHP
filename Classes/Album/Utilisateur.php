@@ -57,5 +57,19 @@ class Utilisateur{
         $stmt->bindParam(6, $mdp, PDO::PARAM_STR);
         $stmt->execute();
     }
+
+    public static function connexion($pseudo, $mdp){
+        $pdo = Database::getPdo();
+        try{
+            $mdpPDO = $pdo->query('SELECT motDePasse FROM UTILISATEUR where pseudo = "' . $pseudo. '"')->fetchColumn();
+        }
+        catch(PDOException $e){
+            var_dump($e->getMessage());
+        }
+        if ($mdpPDO == $mdp){
+            $_SESSION['pseudo'] = $pseudo;
+            exit();
+        }
+    }
 }
 ?>

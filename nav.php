@@ -8,7 +8,7 @@
         <?php
         session_start();
         if (isset($_SESSION['pseudo'])) {
-            echo '<li><a href="profil.php">' . $_SESSION['pseudo'] . '</a></li>';
+            echo '<li><a href="">' . $_SESSION['pseudo'] . '</a></li>';
         } else {
             echo '<li><a href="page_login.php">Login</a></li>';
         }

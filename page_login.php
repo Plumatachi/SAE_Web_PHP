@@ -11,20 +11,19 @@
             Autoloader::register();
             use Album\Utilisateur;
             include 'nav.php';
-
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $pseudo = $_POST['pseudo'];
                 $mdp = $_POST['mdp'];
-                Utilisateur::connexion();
+                Utilisateur::connexion($pseudo, $mdp);
                 exit();
             }
         ?>
         <form action="index.php" method="POST">
         <h1>Connectez-vous</h1>
             <p>Nom d'utilisateur</p>
-            <input type="text" name="pseudo">
+            <input type="text" id="pseudo" name="pseudo">
             <p>Mot de passe</p>
-            <input type="password" name="mdp">
+            <input type="password" id="mdp" name="mdp">
             <button type="submit">Se connecter</button>
             <a href="page_inscription.php">Vous n'avez pas encore de compte ?</a>
         </form>
