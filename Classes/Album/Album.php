@@ -1,6 +1,8 @@
 <?php
 namespace Album;
 use Album\Database;
+use Album\Groupe;
+use Album\Genre;
 
 class Album{
     protected $idAlbum;
@@ -53,7 +55,7 @@ class Album{
         return '<li>
                     <div class="flex album-item">
                         <div class="album-details">
-                            <a href="#">
+                            <a href="detailAlbum.php?id='.$this->idAlbum.'">
                                 <img src="Data/images/'.str_replace("%","%25",$this->imageAlbum).'" alt="'.$this->titre.'">
                             </a>
                             <h2 class="title">'.$this->titre.'</h2>
@@ -149,6 +151,37 @@ class Album{
         return $newAlbums;
     }
 
+    public static function getGenresAlbums(int $idAlbum) {
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT idGenre FROM AlbumGenres WHERE idAlbum = :idAlbum');
+        $query->bindValue(':idAlbum', $idAlbum);
+        $query->execute();
+        $idsGenres = $query->fetchAll();
+        $res = '';
+        foreach ($idsGenres as $idGenre) {
+            $res .= Genre::getNomGenreById($idGenre[0]) . ", ";
+        }
+        return $res;
+    }
+
+    public static function getDetailAlbum(int $idAlbum){
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT * FROM ALBUM WHERE idAlbum = :idAlbum');
+        $query->bindValue(':idAlbum', $idAlbum);
+        $query->execute();
+        $album = $query->fetchAll();
+        $instance = new Album($album[0]['idAlbum'], $album[0]['idChanteur'], $album[0]['idProducteur'], $album[0]['titre'], $album[0]['annee'], $album[0]['imageAlbum'], $album[0]['entryID']);
+        $html = '<div class="partie-gauche">
+                    <h1>'.$instance->getTitre().'</h1>
+                    <img src="Data/images/'.str_replace("%","%25",$instance->getImage()).'" alt="'.$instance->getTitre().'">
+                </div>
+                <div class="partie-droite">
+                    <p><strong>Artiste :</strong> '.Groupe::getNomArtiste($instance->getIdChanteur()).'</p>
+                    <p><strong>Genres :</strong> '.$instance->getGenresAlbums($instance->getIdAlbum()).'</p>
+                    <p><strong>Année :</strong> '.$instance->getAnnee().'</p>
+                </div>';
+        return $html;
+    }
 
 }
 

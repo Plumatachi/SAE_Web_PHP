@@ -1,31 +1,32 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-body{
+body {
     background-color: #000000;
+    font-family: 'Lato';
 }
 
-h1{
+h1 {
     color: white;
     margin: 5vh 0 2vh 5vw;
 }
 
-nav.nav-bar ul{
+nav.nav-bar ul {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     list-style: none;
 }
 
-nav.nav-bar a{
+nav.nav-bar a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
     font-size: 1.5em;
 }
 
-nav.nav-bar{
+nav.nav-bar {
     background-color: #1E1E1E;
 }
