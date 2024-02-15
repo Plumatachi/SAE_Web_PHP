@@ -45,6 +45,20 @@ class Genre{
         }
         return $html .='</select>';
     }
+
+    public static function getGenresOptionadd(){
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT * FROM GENRE ORDER BY nom ASC');
+        $query->execute();
+        $genres = $query->fetchAll();
+        $html = '<select name="genre" id="genre" onchange="getAlbumsFilter()">
+                    <option value="-1">Genre</option>';
+        foreach ($genres as $genre){
+            $instance = new Genre($genre['idGenre'], $genre['nom']);
+            $html .= '<option value="'.$instance->getIdGenre().'">'.$instance->getNom().'</option>';
+        }
+        return $html .='</select>';
+    }
 }
 
 
