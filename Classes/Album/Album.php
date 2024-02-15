@@ -54,7 +54,7 @@ class Album{
     public function render(){
         return '<li>
                     <div class="flex">
-                        <a href="#">
+                        <a href="detailAlbum.php?id='.$this->idAlbum.'">
                             <img src="Data/images/'.str_replace("%","%25",$this->imageAlbum).'" alt="'.$this->titre.'">
                         </a>
                         <h2>'.$this->titre.'</h2>

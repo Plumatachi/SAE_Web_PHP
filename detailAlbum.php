@@ -21,7 +21,7 @@ require_once 'Classes/Autoloader.php';
     ?>
     <div class="content">
         <?php
-        echo Album::getDetailAlbum(2);
+        echo Album::getDetailAlbum($_GET['id']);
         ?>
     </div>
 </body>
