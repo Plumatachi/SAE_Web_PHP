@@ -44,11 +44,11 @@ switch ($argv[1]) {
                 nomRole       TEXT NOT NULL
             );
             CREATE TABLE IF NOT EXISTS UTILISATEUR (
-                idUtilisateur INTEGER NOT NULL PRIMARY KEY,
+                email         TEXT NOT NULL PRIMARY KEY,
                 idRole        INTEGER NOT NULL,
                 nom           TEXT NOT NULL,
                 prenom        TEXT NOT NULL,
-                email         TEXT NOT NULL,
+                pseudo        TEXT NOT NULL,
                 motDePasse    TEXT NOT NULL,
                 FOREIGN KEY(idRole) REFERENCES ROLE(idRole)
             );
@@ -207,12 +207,9 @@ switch ($argv[1]) {
                 $stmt->bindParam(2, $name, PDO::PARAM_STR);
                 $stmt->execute();
             }
-
-
-        
         }
         break;
-    
+
     default:
         echo 'No action defined 🙀'.PHP_EOL;
         break;
