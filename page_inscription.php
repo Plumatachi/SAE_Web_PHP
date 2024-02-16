@@ -26,15 +26,15 @@
         <form action="" method="POST">
             <h1>Inscrivez-vous</h1>
             <p>Nom <span>*</span></p>
-            <input type="text" id="nom" name="nom">
+            <input type="text" id="nom" name="nom" required>
             <p>Prénom <span>*</span></p>
-            <input type="text" id="prenom" name="prenom">
-            <p>Email</p>
-            <input type="text" id="email" name="email">
+            <input type="text" id="prenom" name="prenom" required>
+            <p>Email <span>*</span></p>
+            <input type="text" id="email" name="email" required>
             <p>Nom d'utilisateur <span>*</span></p>
-            <input type="text" id="pseudo" name="pseudo">
+            <input type="text" id="pseudo" name="pseudo" required>
             <p>Mot de passe <span>*</span></p>
-            <input type="password" id="mdp" name="mdp">
+            <input type="password" id="mdp" name="mdp" required>
             <button type="submit">S'inscrire</button>
             <a href="page_login.php">Vous possédez déjà un compte ?</a>
         </form>
