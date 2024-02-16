@@ -44,10 +44,10 @@ switch ($argv[1]) {
                 nomRole       TEXT NOT NULL
             );
             CREATE TABLE IF NOT EXISTS UTILISATEUR (
+                email         TEXT NOT NULL PRIMARY KEY,
                 idRole        INTEGER NOT NULL,
                 nom           TEXT NOT NULL,
                 prenom        TEXT NOT NULL,
-                email         TEXT NOT NULL PRIMARY KEY,
                 pseudo        TEXT NOT NULL,
                 motDePasse    TEXT NOT NULL,
                 FOREIGN KEY(idRole) REFERENCES ROLE(idRole)

@@ -13,6 +13,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
 </head>
 <body>
     <?php
@@ -20,19 +21,25 @@
     ?>
     <div class="albums">
         <h1>Albums publiés</h1>
-        <ul>
-            <?php
-            echo Album::getAlbums(5);
-            ?>
-        </ul>
+        <div id="album-rotator">
+            <div id="album-rotator-holder">
+                    <?php
+                    echo Album::getAlbums();
+                    ?>
+            </div>
+        </div>
     </div>
     <div class="artistes">
         <h1>Artistes</h1>
-        <ul>
-            <?php
-            echo Groupe::getArtistes();
-            ?>
-        </ul>
+        <div id="album2-rotator">
+            <div id="album2-rotator-holder">
+                <ul>
+                    <?php
+                    echo Groupe::getArtistes();
+                    ?>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html>
