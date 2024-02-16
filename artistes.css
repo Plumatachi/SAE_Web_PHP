@@ -6,25 +6,25 @@ div.content {
     justify-content: space-evenly;
 }
 
-div.albums img {
+div.artiste img {
     width: 20vw;
     height: 20vw;
     border-radius: 20px;
     margin: 1vh 1vw;
 }
 
-div.albums h2 {
+div.artiste h2 {
     color: white;
 }
 
-div.albums div.flex {
+div.artiste div.flex {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
 }
 
-div.albums ul {
+div.artiste ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
