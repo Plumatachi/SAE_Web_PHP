@@ -94,6 +94,9 @@ class Utilisateur{
 
     public static function isAdmin(){
         $pdo = Database::getPdo();
+        if (!isset($_SESSION['pseudo'])){
+            return false;
+        }
         $pseudo = $_SESSION['pseudo'];
         $idRole = $pdo->query('SELECT idRole FROM UTILISATEUR where pseudo = "' . $pseudo. '"')->fetchColumn();
         if ($idRole == 1){

@@ -270,6 +270,7 @@ class Album{
         }
         $html .= '</ul>';
         return $html;
+    }
       
     public static function getChansonsAlbum(int $idAlbum): array {
         $pdo = Database::getPdo();

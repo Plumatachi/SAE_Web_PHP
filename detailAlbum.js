@@ -1,12 +1,19 @@
 document.addEventListener("DOMContentLoaded", function (e) {
-    document.getElementById("btn-modifier").addEventListener("click", function (e) {
-        ModifierAlbum();
-    });
-    document.getElementById("btn-supprimer").addEventListener("click", function (e) {
-        SupprimerAlbum();
-    });
+    
     document.getElementById('annee').setAttribute('disabled', 'true');
     document.getElementById('titre').setAttribute('disabled', 'true');
+    document.getElementById('artiste').setAttribute('disabled', 'true');
+
+    if(document.getElementById('btn-modifier')){
+        document.getElementById('btn-modifier').addEventListener('click', function(e){
+            ModifierAlbum();
+        });
+    }
+    if(document.getElementById('btn-valider')){
+        document.getElementById('btn-valider').addEventListener('click', function(e){
+            EnregistrerAlbum();
+        });
+    }
     artiste = document.getElementById("artiste");
     artiste.setAttribute("disabled", "true");
     for( let option of artiste.options){
