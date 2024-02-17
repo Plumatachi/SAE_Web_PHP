@@ -27,7 +27,9 @@ class Groupe{
                     <div class="flex album2-item">
                         <a class="album2-details">
                             <div class="groupe">
-                                <img src="'.$this->getPhoto().'" alt="'.$this->nom.'">
+                            <a href="detailArtiste.php?id='.$this->idGroupe.'">
+                                    <img src="'.$this->getPhoto().'" alt="'.$this->nom.'">
+                                </a>
                                 <h2>'.$this->nom.'</h2>
                             </div>
                         </a>
