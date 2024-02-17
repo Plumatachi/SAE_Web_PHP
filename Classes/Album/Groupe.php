@@ -27,7 +27,9 @@ class Groupe{
                     <div class="flex album2-item">
                         <a class="album2-details">
                             <div class="groupe">
-                                <img src="'.$this->getPhoto().'" alt="'.$this->nom.'">
+                            <a href="detailArtiste.php?id='.$this->idGroupe.'">
+                                    <img src="'.$this->getPhoto().'" alt="'.$this->nom.'">
+                                </a>
                                 <h2>'.$this->nom.'</h2>
                             </div>
                         </a>
@@ -96,6 +98,18 @@ class Groupe{
         return $nom;
     }
 
+
+    public static function getArtisteById(int $idArt) {
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT * FROM GROUPE WHERE idGroupe = :idArt');
+        $query->bindValue(':idArt', $idArt);
+        $query->execute();
+        $groupe = $query->fetchAll();
+        $instance = new Groupe($groupe[0]['idGroupe'], $groupe[0]['nom']);
+        $html = '<h2>'.$instance->nom.'</h2>
+                <img src="https://picsum.photos/100" alt="'.$instance->nom.'">';
+        return $html;
+    }
     public static function getArtisteFilter($recherche){
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM GROUPE WHERE nom LIKE :recherche ORDER BY nom ASC');
