@@ -44,13 +44,13 @@ CREATE TABLE ROLE(
 );
 
 CREATE TABLE UTILISATEUR(
-    idUtilisateur INT,
     idRole INT,
     Nom Varchar,
     Prenom Varchar,
     Email Varchar,
+    Pseudo Varchar,
     Mdp Varchar,
-    PRIMARY KEY (idUtilisateur)
+    PRIMARY KEY (Email)
     FOREIGN KEY (idRole) REFERENCES ROLE(idRole)
 );
 
