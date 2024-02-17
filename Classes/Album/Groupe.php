@@ -61,7 +61,7 @@ class Groupe{
         $query = $pdo->prepare('SELECT * FROM GROUPE ORDER BY nom ASC');
         $query->execute();
         $groupes = $query->fetchAll();
-        $html = '<select name="artiste" id="artiste" onchange="getAlbumsFilter()">';
+        $html = '<select name="artiste" id="artiste">';
         $html .= self::OptionArtistes($groupes);
         return $html .='</select>';
     }

@@ -50,34 +50,26 @@ class Utilisateur{
 
     public static function addUser($nom, $prenom, $email, $pseudo, $mdp){
         $pdo = Database::getPdo();
-        if ($email != "" and verifEmail){
-            $emails = $pdo->query("SELECT email FROM UTILISATEUR");
-            foreach ($mail as $emails){
-                if ($mail == $email){
-                    error_log(print_r("Email invalide"));
-                }
-            }
-            if ($prenom != ""){
-                if ($nom != ""){
-                    if ($mdp != ""){
-                        $idRole = 2;
-                        $query = 'INSERT INTO UTILISATEUR (idRole, nom, prenom, email, pseudo, motDePasse) VALUES (?,?,?,?,?,?)';
-                        $stmt = $pdo->prepare($query);
-                        $stmt->bindParam(1, $idRole, PDO::PARAM_INT);
-                        $stmt->bindParam(2, $nom, PDO::PARAM_STR);
-                        $stmt->bindParam(3, $prenom, PDO::PARAM_STR);
-                        $stmt->bindParam(4, $email, PDO::PARAM_STR);
-                        $stmt->bindParam(5, $pseudo, PDO::PARAM_STR);
-                        $stmt->bindParam(6, $mdp, PDO::PARAM_STR);
-                        $stmt->execute();
-
-                        $_SESSION['pseudo'] = $pseudo;
-                        header("Location: index.php");
-                        exit();
-                    }
-                }
+        $emails = $pdo->query("SELECT email FROM UTILISATEUR");
+        foreach ($mail as $emails){
+            if ($mail == $email){
+                
             }
         }
+        $idRole = 2;
+        $query = 'INSERT INTO UTILISATEUR (idRole, nom, prenom, email, pseudo, motDePasse) VALUES (?,?,?,?,?,?)';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(1, $idRole, PDO::PARAM_INT);
+        $stmt->bindParam(2, $nom, PDO::PARAM_STR);
+        $stmt->bindParam(3, $prenom, PDO::PARAM_STR);
+        $stmt->bindParam(4, $email, PDO::PARAM_STR);
+        $stmt->bindParam(5, $pseudo, PDO::PARAM_STR);
+        $stmt->bindParam(6, $mdp, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $_SESSION['pseudo'] = $pseudo;
+        header("Location: index.php");
+        exit();
     }
 
     public static function connexion($pseudo, $mdp){
@@ -99,6 +91,18 @@ class Utilisateur{
             }
         }
     }
+
+    public static function isAdmin(){
+        $pdo = Database::getPdo();
+        $pseudo = $_SESSION['pseudo'];
+        $idRole = $pdo->query('SELECT idRole FROM UTILISATEUR where pseudo = "' . $pseudo. '"')->fetchColumn();
+        if ($idRole == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     public static function deconnexion(){
         session_destroy();

@@ -3,6 +3,7 @@ namespace Album;
 use Album\Database;
 use Album\Groupe;
 use Album\Genre;
+use Album\Chanson;
 
 class Album{
     protected $idAlbum;
@@ -130,7 +131,7 @@ class Album{
         $query = $pdo->prepare('SELECT DISTINCT annee FROM ALBUM ORDER BY annee DESC');
         $query->execute();
         $annees = $query->fetchAll();
-        $html = '<select name="annee" id="annee" onchange="getAlbumsFilter()">
+        $html = '<select name="annee" id="annee">
                 <option value="">Année</option>';
         foreach ($annees as $annee){
             $html .= '<option value="'.$annee['annee'].'">'.$annee['annee'].'</option>';
@@ -227,15 +228,47 @@ class Album{
         $album = $query->fetchAll();
         $instance = new Album($album[0]['idAlbum'], $album[0]['idChanteur'], $album[0]['idProducteur'], $album[0]['titre'], $album[0]['annee'], $album[0]['imageAlbum'], $album[0]['entryID']);
         $html = '<div class="partie-gauche">
-                    <h1>'.$instance->getTitre().'</h1>
+                    <h1><input type="text" id="titre" name="titre" value="'.$instance->getTitre().'"></h1>
                     <img src="Data/images/'.str_replace("%","%25",$instance->getImage()).'" alt="'.$instance->getTitre().'">
                 </div>
                 <div class="partie-droite">
-                    <p><strong>Artiste :</strong> '.Groupe::getNomArtiste($instance->getIdChanteur()).'</p>
-                    <p><strong>Genres :</strong> '.$instance->getGenresAlbums($instance->getIdAlbum()).'</p>
-                    <p><strong>Année :</strong> '.$instance->getAnnee().'</p>
-                </div>';
+                    <input type="hidden" id="idAlbum" name="idAlbum" value="'.$instance->getIdAlbum().'">
+                    <input type="hidden" id="idChanteur" name="idChanteur" value="'.$instance->getIdChanteur().'">
+                    <input type="hidden" id="idProducteur" name="idProducteur" value="'.$instance->getIdProducteur().'">
+                    <input type="hidden" id="titre" name="titre" value="'.$instance->getTitre().'">
+                    <input type="hidden" id="hiddenannee" name="hiddenannee" value="'.$instance->getAnnee().'">
+
+                    <label for="artiste"><strong>Chanteur</strong></label>
+                    '.Groupe::getArtistesOption().'
+                    <label for="Genres"><strong>Genres</strong></label>
+                    <input type="text" id="Genres" name="Genres" value="'.$instance->getGenresAlbums($instance->getIdAlbum()).'" disabled>
+                    <label for="annee"><strong>Année</strong></label>
+                    <input type="number" id="annee" name="annee" value="'.$instance->getAnnee().'">
+                    <p><strong>Chansons</strong></p>
+                    <div>';
+                        $chansons = self::getChansonsAlbum($idAlbum);
+                        for ($i = 0; $i < count($chansons); $i++){
+                            $html .= '<p>'.$chansons[$i]->getTitre().'</p>';
+                        }
+                $html .= '</div>';
+        Utilisateur::isAdmin() ? $html .= '<button id="btn-modifier">Modifier</button>' : '';
+        Utilisateur::isAdmin() ? $html .= '<button id="btn-supprimer">Supprimer</button>' : '';
+        $html .='</div>';
         return $html;
+    }
+
+    public static function getChansonsAlbum(int $idAlbum): array {
+        $pdo = Database::getPdo();
+        $query = $pdo->prepare('SELECT * FROM CHANSON WHERE idAlbum = :idAlbum');
+        $query->bindValue(':idAlbum', $idAlbum);
+        $query->execute();
+        $chansons = $query->fetchAll();
+        $array = array();
+        foreach ($chansons as $chanson){
+            $instance = new Chanson($chanson['idChanson'], $chanson['idAlbum'], $chanson['titre']);
+            $array[] = $instance;
+        }
+        return $array;
     }
 
 }
