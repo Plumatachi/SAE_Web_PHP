@@ -26,6 +26,8 @@ div.partie-gauche {
 }
 
 div.partie-droite {
+    display: flex;
+    flex-direction: column;
     text-align: left;
     height: 30%;
     margin: auto;
@@ -35,4 +37,16 @@ div.partie-droite {
 h1 {
     margin-right: 0em;
     margin-left: 0em;
+}
+
+input{
+    color: white;
+    background-color: black;
+    font-size: 1.5em;
+    border : none;
+    padding: 0.2em;
+}
+
+label{
+    font-size: 1.5em;
 }

@@ -1,3 +1,11 @@
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('search_Albums').addEventListener('input', getAlbumsFilter);
+    document.getElementById('annee').addEventListener('change', getAlbumsFilter);
+    document.getElementById('artiste').addEventListener('change', getAlbumsFilter);
+    document.getElementById('genre').addEventListener('change', getAlbumsFilter);
+});
+
+
 function getAlbumsFilter() {
     let artiste = document.getElementById('artiste').value ?? null;
     let recherche = document.getElementById('search_Albums').value == '' ? '' : document.getElementById('search_Albums').value;

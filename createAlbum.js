@@ -30,7 +30,3 @@ document.addEventListener("DOMContentLoaded", function(e) {
         console.log(hiddenInput.value);
     }
 });
-
-function getAlbumsFilter(){
-    // Fonction pour filtrer les albums en fonction des genres sélectionnés
-}
