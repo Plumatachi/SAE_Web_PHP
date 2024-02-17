@@ -23,6 +23,11 @@ p {
     padding: 1.5em;
 }
 
+#ul-albums img {
+    width: 220px;
+    height: 220px;
+}
+
 nav.nav-bar {
     margin-bottom: 2.5em;
 }
