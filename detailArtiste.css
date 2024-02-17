@@ -1,18 +1,28 @@
 body {
     color: white;
+    text-align: center;
 }
 
 p {
     font-size: 1.5em;
 }
 
-div.content {
-    width: 50%;
-    margin: auto;
-    text-align: center;
-}
-
 #ul-albums {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: auto;
+    margin-top: 1em;
+    width: 65%;
+}
+
+#ul-albums li {
+    margin: 1em;
+    background-color: #1E1E1E;
+    border-radius: 20px;
+    padding: 1.5em;
+}
+
+nav.nav-bar {
+    margin-bottom: 2.5em;
 }
