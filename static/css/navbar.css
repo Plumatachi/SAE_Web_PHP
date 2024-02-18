@@ -8,9 +8,12 @@ body {
     font-family: 'Lato';
 }
 
-h1 {
-    color: white;
+nav.nav-bar h1 {
     margin: 5vh 0 2vh 5vw;
+}
+
+h1{
+    color: white;
 }
 
 nav.nav-bar ul {
