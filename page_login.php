@@ -21,9 +21,9 @@
         <form action="" method="POST">
         <h1>Connectez-vous</h1>
             <p>Nom d'utilisateur</p>
-            <input type="text" id="pseudo" name="pseudo">
+            <input type="text" id="pseudo" name="pseudo" required>
             <p>Mot de passe</p>
-            <input type="password" id="mdp" name="mdp">
+            <input type="password" id="mdp" name="mdp" required>
             <button type="submit">Se connecter</button>
             <a href="page_inscription.php">Vous n'avez pas encore de compte ?</a>
         </form>
