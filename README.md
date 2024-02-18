@@ -45,8 +45,7 @@ Lorsque vous vous rendrez sur le lien menant à l'application web, vous atterire
 
 A partir de cette page, vous pouvez :
 - Consulter les détails d'un album
-- Consulter un artiste
-- Aller sur la page de recherche des artistes (Onglet Artistes)
-- Aller sur la page de recherche des albums (Onglet Albums)
+- Consulter les détails d'un artiste
+- Aller sur la page de recherche des artistes
+- Aller sur la page de recherche des albums
 - Vous connecter ou vous inscrire
-
