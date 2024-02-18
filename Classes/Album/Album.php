@@ -57,7 +57,7 @@ class Album{
                     <div class="flex album-item">
                         <div class="album-details">
                             <a href="detailAlbum.php?id='.$this->idAlbum.'">
-                                <img src="Data/images/'.str_replace("%","%25",$this->imageAlbum).'" alt="'.$this->titre.'">
+                                <img src="static/images/'.str_replace("%","%25",$this->imageAlbum).'" alt="'.$this->titre.'">
                             </a>
                             <h2 class="title">'.$this->titre.'</h2>
                         </div>
@@ -229,7 +229,7 @@ class Album{
         $instance = new Album($album[0]['idAlbum'], $album[0]['idChanteur'], $album[0]['idProducteur'], $album[0]['titre'], $album[0]['annee'], $album[0]['imageAlbum'], $album[0]['entryID']);
         $html = '<div class="partie-gauche">
                     <h1><input type="text" id="titre" name="titre" value="'.$instance->getTitre().'"></h1>
-                    <img src="Data/images/'.str_replace("%","%25",$instance->getImage()).'" alt="'.$instance->getTitre().'">
+                    <img src="static/images/'.str_replace("%","%25",$instance->getImage()).'" alt="'.$instance->getTitre().'">
                 </div>
                 <div class="partie-droite">
                     <input type="hidden" id="idAlbum" name="idAlbum" value="'.$instance->getIdAlbum().'">

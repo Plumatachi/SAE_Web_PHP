@@ -1,23 +1,23 @@
 document.addEventListener("DOMContentLoaded", function (e) {
-    
+
     document.getElementById('annee').setAttribute('disabled', 'true');
     document.getElementById('titre').setAttribute('disabled', 'true');
     document.getElementById('artiste').setAttribute('disabled', 'true');
 
-    if(document.getElementById('btn-modifier')){
-        document.getElementById('btn-modifier').addEventListener('click', function(e){
+    if (document.getElementById('btn-modifier')) {
+        document.getElementById('btn-modifier').addEventListener('click', function (e) {
             ModifierAlbum();
         });
     }
-    if(document.getElementById('btn-valider')){
-        document.getElementById('btn-valider').addEventListener('click', function(e){
+    if (document.getElementById('btn-valider')) {
+        document.getElementById('btn-valider').addEventListener('click', function (e) {
             EnregistrerAlbum();
         });
     }
     artiste = document.getElementById("artiste");
     artiste.setAttribute("disabled", "true");
-    for( let option of artiste.options){
-        if(option.value == document.getElementById("idChanteur").value){
+    for (let option of artiste.options) {
+        if (option.value == document.getElementById("idChanteur").value) {
             option.selected = true;
         }
     }
@@ -65,7 +65,7 @@ function ModifierAlbum() {
         });
         div.appendChild(btn);
     }
-    else{
+    else {
         let btn = document.getElementById("btn-valider");
         btn.remove();
     }
@@ -103,7 +103,7 @@ function EnregistrerAlbum() {
     }).catch(function (error) {
         console.error(error);
     });
-    }
+}
 
 
 function switchInput() {
@@ -120,6 +120,7 @@ function switchInput() {
         annee.disabled = true;
         annee.style.border = "none";
         titre.disabled = true;
+        titre.style.border = "none";
     }
     else {
         artiste.disabled = false;
@@ -129,5 +130,6 @@ function switchInput() {
         annee.disabled = false;
         annee.style.border = "2px solid #FFF";
         titre.disabled = false;
+        titre.style.border = "2px solid #FFF";
     }
 }

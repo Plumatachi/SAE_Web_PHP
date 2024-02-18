@@ -1,6 +1,6 @@
 <nav class="nav-bar">
     <ul>
-        <li><a href="index.php"><img src="https://picsum.photos/100" alt="Logo"></a></li>
+        <li><a href="index.php"><img src="static/images/logo.png" alt="Logo"></a></li>
         <li><a href="artistes.php">Artistes</a></li>
         <li><a href="albums.php">Albums</a></li>
         <?php

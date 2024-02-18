@@ -8,9 +8,9 @@ require_once 'Classes/Autoloader.php';
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="artistes.css">
-    <script type="module" src="artistes.js"></script>
+    <link rel="stylesheet" href="static/css/navbar.css">
+    <link rel="stylesheet" href="static/css/artistes.css">
+    <script type="module" src="static/js/artistes.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 </head>
 <body>

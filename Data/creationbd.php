@@ -1,11 +1,11 @@
 <?php
-define('SQLITE_DB', __DIR__.'/../Data/cisuM.sqlite');
+define('SQLITE_DB', __DIR__.'/../Data/Music.sqlite');
 require_once __DIR__.'/../Classes/Album/Spyc.php';
 $pdo = new PDO('sqlite:' . SQLITE_DB);
 
 switch ($argv[1]) {
     case 'create-database':
-        echo '→ Go create database "cisuM.sqlite"' . PHP_EOL;
+        echo '→ Go create database "Music.sqlite"' . PHP_EOL;
         shell_exec('sqlite3 ' . SQLITE_DB);
         break;
 

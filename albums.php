@@ -11,8 +11,8 @@ require_once 'Classes/Autoloader.php';
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="albums.css">
+    <link rel="stylesheet" href="static/css/navbar.css">
+    <link rel="stylesheet" href="static/css/albums.css">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 </head>
 <body>
@@ -35,6 +35,6 @@ require_once 'Classes/Autoloader.php';
             ?>
         </div>
     </div>
-    <script src="albums.js"></script>
+    <script src="static/js/albums.js"></script>
 </body>
 </html>

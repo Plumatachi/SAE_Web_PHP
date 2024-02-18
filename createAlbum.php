@@ -7,7 +7,7 @@ require_once 'Classes/Autoloader.php';
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <script src="createAlbum.js"></script>
+    <script src="static/js/createAlbum.js"></script>
     <title>Document</title>
 </head>
 <body>
