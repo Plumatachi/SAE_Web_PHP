@@ -35,6 +35,6 @@ require_once 'Classes/Autoloader.php';
             ?>
         </div>
     </div>
-    <script src="albums.js"></script>
+    <script src="static/js/albums.js"></script>
 </body>
 </html>
