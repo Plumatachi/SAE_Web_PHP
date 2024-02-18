@@ -20,35 +20,35 @@ class Utilisateur{
         $this->mdp = $mdp;
     }
 
-    public function getIdRole(){
+    public function getIdRole(): int{
         return $this->idRole;
     }
 
-    public function getNom(){
+    public function getNom(): string{
         return $this->nom;
     }
 
-    public function getPrenom(){
+    public function getPrenom(): string{
         return $this->prenom;
     }
 
-    public function getEmail(){
+    public function getEmail(): string{
         return $this->email;
     }
 
-    public function getPseudo(){
+    public function getPseudo(): string{
         return $this->pseudo;
     }
 
-    public function getMDP(){
+    public function getMDP(): string{
         return $this->mdp;
     }
 
-    public function verifEmail($email){
+    public function verifEmail($email): bool{
         return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
 
-    public static function addUser($nom, $prenom, $email, $pseudo, $mdp){
+    public static function addUser($nom, $prenom, $email, $pseudo, $mdp): void{
         $pdo = Database::getPdo();
         $emails = $pdo->query("SELECT email FROM UTILISATEUR");
         foreach ($mail as $emails){
@@ -72,7 +72,7 @@ class Utilisateur{
         exit();
     }
 
-    public static function connexion($pseudo, $mdp){
+    public static function connexion($pseudo, $mdp): void{
         if ($pseudo != ""){
             $pdo = Database::getPdo();
             try{
@@ -92,7 +92,7 @@ class Utilisateur{
         }
     }
 
-    public static function isAdmin(){
+    public static function isAdmin(): bool{
         $pdo = Database::getPdo();
         if (!isset($_SESSION['pseudo'])){
             return false;
@@ -107,7 +107,7 @@ class Utilisateur{
     }
 
 
-    public static function deconnexion(){
+    public static function deconnexion(): void{
         session_destroy();
         header("Location: index.php");
     }

@@ -11,15 +11,15 @@ class Genre{
         $this->nom = $nom;
     }
 
-    public function getIdGenre(){
+    public function getIdGenre(): int{
         return $this->idGenre;
     }
 
-    public function getNom(){
+    public function getNom(): string{
         return $this->nom;
     }
 
-    public static function getGenres(){
+    public static function getGenres(): string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM GENRE');
         $query->execute();
@@ -32,7 +32,7 @@ class Genre{
         return $html;
     }
 
-    public static function getGenresOption(){
+    public static function getGenresOption(): string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM GENRE ORDER BY nom ASC');
         $query->execute();
@@ -46,7 +46,7 @@ class Genre{
         return $html .='</select>';
     }
 
-    public static function getGenresOptionadd(){
+    public static function getGenresOptionadd(): string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM GENRE ORDER BY nom ASC');
         $query->execute();
@@ -60,7 +60,7 @@ class Genre{
         return $html .='</select>';
     }
       
-    public static function getNomGenreById(int $id) {
+    public static function getNomGenreById(int $id): string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM GENRE WHERE idGenre = :idGenre');
         $query->bindValue(':idGenre', $id);

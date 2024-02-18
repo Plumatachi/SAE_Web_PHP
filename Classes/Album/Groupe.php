@@ -10,11 +10,11 @@ class Groupe{
         $this->nom = $nom;
     }
 
-    public function getIdGroupe(){
+    public function getIdGroupe(): int{
         return $this->idGroupe;
     }
 
-    public function getNom(){
+    public function getNom(): string{
         return $this->nom;
     }
 
@@ -22,7 +22,7 @@ class Groupe{
         return 'https://picsum.photos/100';
     }
 
-    public function render(){
+    public function render(): string{
         return '<li>
                     <div class="flex album2-item">
                         <div class="album2-details">
@@ -35,14 +35,14 @@ class Groupe{
                 </li>';
     }
 
-    public function toJSON(){
+    public function toJSON(): string{
         return json_encode([
             'idGroupe' => $this->idGroupe,
             'nom' => $this->nom
         ]);
     }
 
-    public static function getArtistes(){
+    public static function getArtistes(): string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM GROUPE ORDER BY nom ASC');
         $query->execute();
@@ -56,7 +56,7 @@ class Groupe{
         return $html;
     }
 
-    public static function getArtistesOption(){
+    public static function getArtistesOption(): string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM GROUPE ORDER BY nom ASC');
         $query->execute();
@@ -66,7 +66,7 @@ class Groupe{
         return $html .='</select>';
     }
 
-    public static function getProducteurOption(){
+    public static function getProducteurOption(): string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM GROUPE ORDER BY nom ASC');
         $query->execute();
@@ -85,7 +85,7 @@ class Groupe{
         return $html;
     }
 
-    public static function getNomArtiste(int $idArt) {
+    public static function getNomArtiste(int $idArt) : string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM GROUPE WHERE idGroupe = :idArt');
         $query->bindValue(':idArt', $idArt);
@@ -97,7 +97,7 @@ class Groupe{
     }
 
 
-    public static function getArtisteById(int $idArt) {
+    public static function getArtisteById(int $idArt) : string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM GROUPE WHERE idGroupe = :idArt');
         $query->bindValue(':idArt', $idArt);
@@ -108,7 +108,7 @@ class Groupe{
                 <img src="https://picsum.photos/100" alt="'.$instance->nom.'">';
         return $html;
     }
-    public static function getArtisteFilter($recherche){
+    public static function getArtisteFilter($recherche): array{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM GROUPE WHERE nom LIKE :recherche ORDER BY nom ASC');
         $query->bindValue(':recherche', '%'.$recherche.'%');

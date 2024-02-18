@@ -6,7 +6,7 @@ use PDO;
 class Database{
     private static $pdo;
 
-    public static function getPdo(){
+    public static function getPdo(): PDO{
         if (self::$pdo === null){
             self::$pdo = new PDO('sqlite:' . SQLITE_DB);
         }

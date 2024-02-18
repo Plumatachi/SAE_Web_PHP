@@ -24,35 +24,35 @@ class Album{
         $this->entryID = $entryID;
     }
 
-    public function getIdAlbum(){
+    public function getIdAlbum(): int{
         return $this->idAlbum;
     }
 
-    public function getIdChanteur(){
+    public function getIdChanteur(): int{
         return $this->idChanteur;
     }
 
-    public function getIdProducteur(){
+    public function getIdProducteur(): int{
         return $this->idProducteur;
     }
 
-    public function getTitre(){
+    public function getTitre(): string{
         return $this->titre;
     }
 
-    public function getAnnee(){
+    public function getAnnee(): int{
         return $this->annee;
     }
 
-    public function getImage(){
+    public function getImage(): string{
         return $this->imageAlbum;
     }
 
-    public function getEntryID(){
+    public function getEntryID(): int{
         return $this->entryID;
     }
 
-    public function render(){
+    public function render(): string{
         return '<li>
                     <div class="flex album-item">
                         <div class="album-details">
@@ -65,7 +65,7 @@ class Album{
                 </li>';
     }
 
-    public function toJson(){
+    public function toJson(): string{
         return json_encode([
             'idAlbum' => $this->idAlbum,
             'idChanteur' => $this->idChanteur,
@@ -77,7 +77,7 @@ class Album{
         ]);
     }
 
-    public static function createAlbum(string $titre, int $idChanteur, int $idProducteur, int $annee, string $imageAlbum, array $genres, int $entryID=1){
+    public static function createAlbum(string $titre, int $idChanteur, int $idProducteur, int $annee, string $imageAlbum, array $genres, int $entryID=1): void{
         $pdo = Database::getPdo();
         $maxIdAlbum = $pdo->query('SELECT MAX(idAlbum) FROM ALBUM')->fetchColumn() + 1;
         $query = 'INSERT INTO ALBUM (idAlbum, idChanteur, idProducteur, titre, annee, imageAlbum, entryID) VALUES (:idAlbum, :idChanteur, :idProducteur, :titre, :annee, :imageAlbum, :entryID)';
@@ -107,7 +107,7 @@ class Album{
 
     
 
-    public static function getAlbums(int $limit=null){
+    public static function getAlbums(int $limit=null): string{
         $pdo = Database::getPdo();
         if ($limit){
             $query = $pdo->prepare('SELECT * FROM ALBUM LIMIT '.$limit);
@@ -126,7 +126,7 @@ class Album{
         return $html;
     }
 
-    public static function getAnneesOption(){
+    public static function getAnneesOption(): string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT DISTINCT annee FROM ALBUM ORDER BY annee DESC');
         $query->execute();
@@ -139,7 +139,7 @@ class Album{
         return $html .= '</select>';
     }
 
-    public static function getAlbumsFiltre(string $recherche = '', int $artiste = -1, string $annee = null, int $genre = -1){
+    public static function getAlbumsFiltre(string $recherche = '', int $artiste = -1, string $annee = null, int $genre = -1): array{
         $pdo = Database::getPdo();
         error_log(print_r($recherche, true));
         error_log(print_r($artiste, true));
@@ -207,7 +207,7 @@ class Album{
                 </form>';
     }
   
-    public static function getGenresAlbums(int $idAlbum) {
+    public static function getGenresAlbums(int $idAlbum): string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT idGenre FROM AlbumGenres WHERE idAlbum = :idAlbum');
         $query->bindValue(':idAlbum', $idAlbum);
@@ -220,7 +220,7 @@ class Album{
         return $res;
     }
 
-    public static function getDetailAlbum(int $idAlbum){
+    public static function getDetailAlbum(int $idAlbum): string{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM ALBUM WHERE idAlbum = :idAlbum');
         $query->bindValue(':idAlbum', $idAlbum);
@@ -257,7 +257,7 @@ class Album{
         return $html;
     }
 
-    public static function getAlbumsByArtiste(int $artiste){
+    public static function getAlbumsByArtiste(int $artiste): string {
         $pdo = Database::getPdo();
         $stmt = $pdo->prepare('SELECT * FROM ALBUM WHERE idChanteur=:artiste');
         $stmt->bindValue(':artiste', $artiste);
@@ -272,7 +272,7 @@ class Album{
         return $html;
     }
       
-    public static function getChansonsAlbum(int $idAlbum): array {
+    public static function getChansonsAlbum(int $idAlbum): array{
         $pdo = Database::getPdo();
         $query = $pdo->prepare('SELECT * FROM CHANSON WHERE idAlbum = :idAlbum');
         $query->bindValue(':idAlbum', $idAlbum);

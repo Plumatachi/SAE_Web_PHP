@@ -12,15 +12,15 @@ class Chanson{
         $this->titre = $titre;
     }
 
-    public function getIdChanson(){
+    public function getIdChanson(): int{
         return $this->idChanson;
     }
 
-    public function getIdAlbum(){
+    public function getIdAlbum(): int{
         return $this->idAlbum;
     }
 
-    public function getTitre(){
+    public function getTitre(): string{
         return $this->titre;
     }
 
