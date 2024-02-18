@@ -25,14 +25,12 @@ class Groupe{
     public function render(){
         return '<li>
                     <div class="flex album2-item">
-                        <a class="album2-details">
-                            <div class="groupe">
+                        <div class="album2-details">
                             <a href="detailArtiste.php?id='.$this->idGroupe.'">
-                                    <img src="'.$this->getPhoto().'" alt="'.$this->nom.'">
-                                </a>
-                                <h2>'.$this->nom.'</h2>
-                            </div>
-                        </a>
+                                <img src="'.$this->getPhoto().'" alt="'.$this->nom.'">
+                            </a>
+                            <h2>'.$this->nom.'</h2>
+                        </div>
                     </div>
                 </li>';
     }

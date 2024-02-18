@@ -1,4 +1,4 @@
 <?php
-define('SQLITE_DB', __DIR__.'/../Data/cisuM.sqlite');
+define('SQLITE_DB', __DIR__.'/../Data/Music.sqlite');
 ?>
 

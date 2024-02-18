@@ -30,3 +30,8 @@ nav.nav-bar a {
 nav.nav-bar {
     background-color: #1E1E1E;
 }
+
+nav.nav-bar img{
+    height: 15vh;
+    margin-top: 10px;
+}
