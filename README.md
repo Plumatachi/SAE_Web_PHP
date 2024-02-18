@@ -49,3 +49,11 @@ A partir de cette page, vous pouvez :
 - Aller sur la page de recherche des artistes
 - Aller sur la page de recherche des albums
 - Vous connecter ou vous inscrire
+
+## Fonctionnalités implémentées
+
+Voici la liste des fonctionnalités que nous avons implémentées :
+- Inscription et connexion d'un utilisateur
+- Plusieurs méthodes de recherche (par nom, année, genre, etc)
+- Le CRUD pour les albums
+- La lecture des détails concernant les artistes
