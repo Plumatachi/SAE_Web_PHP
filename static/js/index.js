@@ -1,7 +1,7 @@
 const config = {
     individualItem: '.album-item', // class of individual item
     individualItem2: '.album2-item', // class of individual item
-    carouselWidth: 2000, // in px
+    carouselWidth: 1900, // in px
     carouselId: '#album-rotator', // carousel selector
     carouselId2: '#album2-rotator', // carousel selector
     carouselHolderId: '#album-rotator-holder', // 
@@ -110,39 +110,4 @@ document.addEventListener("DOMContentLoaded", function(e) {
             });
         });
     });
-
-    document.querySelectorAll(config.carouselId).forEach(function(item) {
-        let trigger = 0;
-        item.addEventListener('wheel', function(e) {
-            if(trigger !== 1) {
-                ++trigger;
-            } else {
-                let change = e.deltaX * -3;
-                let currentDelta1 = parseFloat(item.querySelector(config.carouselHolderId).style.transform.split('translateX(')[1]) || 0;
-                scrollCarousel(change, currentDelta1, item);
-                trigger = 0;
-            }
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            return false;
-        });
-    });
-
-    document.querySelectorAll(config.carouselId2).forEach(function(item) {
-        let trigger = 0;
-        item.addEventListener('wheel', function(e) {
-            if(trigger !== 1) {
-                ++trigger;
-            } else {
-                let change = e.deltaX * -3;
-                let currentDelta2 = parseFloat(item.querySelector(config.carouselHolderId2).style.transform.split('translateX(')[1]) || 0;
-                scrollCarousel2(change, currentDelta2, item);
-                trigger = 0;
-            }
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            return false;
-        });
-    });
-    
 });
