@@ -208,6 +208,24 @@ switch ($argv[1]) {
                 $stmt->execute();
             }
         }
+        $admin = $pdo->query('SELECT email FROM UTILISATEUR WHERE nom = "admin"')->fetchColumn();
+        if (!$admin){
+            $idRole = $pdo->query('SELECT idRole FROM ROLE WHERE nomRole = "admin"')->fetchColumn();
+            $query = 'INSERT INTO UTILISATEUR (email, idRole, nom, prenom, pseudo, motDePasse) VALUES (?,?,?,?,?,?)';
+            $stmt = $pdo->prepare($query);
+            $email = 'admin';
+            $nom = 'admin';
+            $prenom = 'admin';
+            $pseudo = 'admin';
+            $mdp = 'admin';
+            $stmt->bindParam(1, $email, PDO::PARAM_STR);
+            $stmt->bindParam(2, $idRole, PDO::PARAM_INT);
+            $stmt->bindParam(3, $nom, PDO::PARAM_STR);
+            $stmt->bindParam(4, $prenom, PDO::PARAM_STR);
+            $stmt->bindParam(5, $pseudo, PDO::PARAM_STR);
+            $stmt->bindParam(6, $mdp, PDO::PARAM_STR);
+            $stmt->execute();
+        }
         break;
 
     default:

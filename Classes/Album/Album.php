@@ -205,6 +205,7 @@ class Album{
             $html .= '</div>';
             $html .= '<input type="submit" value="Ajouter">
                 </form>';
+        return $html;
     }
   
     public static function getGenresAlbums(int $idAlbum): string{
