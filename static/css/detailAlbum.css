@@ -1,0 +1,52 @@
+body {
+    color: white;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+div.content {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    margin-top: 2em;
+}
+
+div.partie-gauche,
+div.partie-droite {
+    flex-basis: 50%;
+}
+
+div.partie-gauche {
+    text-align: center;
+    border-right: medium white solid;
+}
+
+div.partie-droite {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    height: 30%;
+    margin: auto;
+    padding-left: 1.5em;
+}
+
+h1 {
+    margin-right: 0em;
+    margin-left: 0em;
+}
+
+input{
+    color: white;
+    background-color: black;
+    font-size: 1.5em;
+    border : none;
+    padding: 0.2em;
+}
+
+label{
+    font-size: 1.5em;
+}

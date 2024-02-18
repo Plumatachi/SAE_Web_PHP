@@ -1,0 +1,160 @@
+- by: Superdrag
+  entryId: 67913
+  genre: [Rock, Punk]
+  img: Superdrag-Stereo_360_Sound.jpg
+  parent: Superdrag
+  releaseYear: 1998
+  title: Stereo 360 Sound
+  chansons: ["Whitey's theme", "My prayer, Señorita", "H.H.T", "Nothing good is real", "Cuts and scars"]
+- by: 16 Horsepower
+  entryId: 10575
+  genre: [Alternative country, neofolk]
+  img: 220px-Folklore_hp.jpg
+  parent: 16 Horsepower
+  releaseYear: 2002
+  title: Folklore
+  chansons: ["Hutterite Mile", "Outlaw song (Traditional)", "Blessed Persistence", "Alone and forsaken", "Single girl", "Beyond the pale", "Horse Head Fiddle (Traditional)", "Sinnerman (Traditional)", "Flutter", "La robe a parasol (Traditional)"]
+- by: Ryan Adams
+  entryId: 10637
+  genre: [Alternative country, country]
+  img: 220px-RyanAdamsHeartbreaker.jpg
+  parent: Ryan Adams
+  releaseYear: 2000
+  title: Heartbreaker
+  chansons: ["To be young (is to be sad, is to be high)", "My winding wheel", "Amy", "Oh my sweet Carolina", "Bartering Lines", "Call me on your way back home", "Damn, Sam (I love a woman that rains)", "Come pick me up", "To be the one", "Why do they leave?", "Shakedown on 9th Street", "Don't ask for the water", "In my time of need", "Sweet Lil Gal"]
+- by: Ryan Adams
+  entryId: 10644
+  genre: [Rock, alternative country, pop rock]
+  img: 220px-Ryanadamsselftitled.jpg
+  parent: Ryan Adams
+  releaseYear: 2014
+  title: Ryan Adams
+  chansons: ["Gimme something good", "Kim", "Trouble", "Am I safe", "My wrecking ball", "Stay with me", "Shadows", "Feels like fire", "I just might", "Tired of giving up", "Let go"]
+- by: Whiskeytown
+  entryId: 10660
+  genre: [Alternative country]
+  img: 220px-WhiskeytownPneumonia.jpg
+  parent: Ryan Adams
+  releaseYear: 2001
+  title: Pneumonia
+  chansons: ["The ballad of Carol Lynn", "Don't wanna know why", "Jacksonville Skyline", "Reasons to lie", "Don't be sad", "Sit & Listen to the rain", "Under your breath", "Mirror, Mirror", "Paper Moon", "What the devil wanted", "Crazy about you", "My hometown", "Easy Hearts", "Bar lights", "To be evil"]
+- by: Jesse Malin
+  entryId: 10668
+  genre: []
+  img: The_Fine_Art_of_Self_Destruction.jpg
+  parent: Ryan Adams
+  releaseYear: 2002
+  title: The Fine Art of Self Destruction
+  chansons: ["Queen of the Underworld", "TKO", "Wendy", "Downliner", "Brooklyn", "The Fine Art of Self Destruction", "Riding on the subway", "High lonesome", "Solitaire", "Almost grown", "Xmas", "Cigarettes and Violets", "Brooklyn (Band Version)"]
+- by: The Finger
+  entryId: 10669
+  genre: []
+  img: null
+  parent: Ryan Adams
+  releaseYear: 2003
+  title: We Are Fuck You
+  chansons: ["Vendetta", "Collar", "Coma for $$$", "Riot", "Inside my brain", "No roolz", "Snakes and scorpions", "Never ever", "Run it down", "Wasted hours", "Hunger plan", "Nail and tooth", "No slaves", "See no skin", "Secret 66", "Too stoopid", "Caspar Lynch", "Punk's dead, Let's fuck", "What is it", "The Finger"]
+- by: Ryan Adams
+  entryId: 10675
+  genre: [Alternative country]
+  img: 220px-Love_Is_Hell.jpg
+  parent: Ryan Adams
+  releaseYear: 2004
+  title: Love Is Hell
+  chansons: ["Political scientist", "Afraid not scared", "This house is not for sale", "Anybody wanna take me home", "Love is hell", "Wonderwall", "The shadowlands", "World War 24", "Avalanche", "My Blue Manhattan", "Please do not let me go", "City rains, City streets", "I see monsters", "English girls approximately", "Thank you Louise", "Hotel Chelsea Nights"]
+- by: Joan Baez
+  entryId: 10679
+  genre: [Folk]
+  img: 220px-DarkChords.jpg
+  parent: Ryan Adams
+  releaseYear: 2003
+  title: Dark Chords on a Big Guitar
+  chansons: ["Sleeper", "In my time of need", "Rosemary Moore", "Caleb Meyer", "Motherland", "Wings", "Rexroth's Daughter", "Elvis Presley Blues", "King's Highway", "Christmas in Washington"]
+- by: Willie Nelson
+  entryId: 10697
+  genre: [Alternative country]
+  img: 220px-Songbird_Willie_Nelson.jpg
+  parent: Ryan Adams
+  releaseYear: 2006
+  title: Songbird
+  chansons: ["Rainy Day Blues", "Songbird", "Blue Hotel", "Back to Earth", "Hallelujah", "$1000 Wedding", "We don't run", "Yours Love", "Sad Songs and Waltzes", "Amazing Grace"]
+- by: Cowboy Junkies
+  entryId: 10707
+  genre: [Country rock, Alternative country]
+  img: 220px-Trinityrevisited.jpg
+  parent: Ryan Adams
+  releaseYear: 2007
+  title: Trinity Revisited
+  chansons: ["Mining for gold", "Misguided angel", "Blue Moon Revisited", "I don't get it", "I'm so lonesome I could cry", "To love is to bury", "200 more miles", "Dreaming my dreams with you", "Working on a building", "Sweet Jane", "Postcard blues", "Walkin' after midnight"]
+- by: Ryan Adams
+  entryId: 10714
+  genre: [Heavy metal, hard rock]
+  img: 220px-Ryan-adams-orion.jpg
+  parent: Ryan Adams
+  releaseYear: 2010
+  title: Orion
+  chansons: ["Signal Fade", "Imminent Galactic War", "Disappyramid", "Fire away", "Defenders of the galaxy", "Fire and Ice", "By force", "Ghorgon, Master of War", "Ariel", "Electro Snake", "Victims of the Ice Brigade", "2,000 ships", "End of days"]
+- by: Whiskeytown
+  entryId: 10770
+  genre: [Alternative country]
+  img: null
+  parent: Ryan Adams
+  releaseYear: 0
+  title: Forever Valentine
+  chansons: ["Anyone but me (Dial tone)", "Don't wanna know why", "Easy Hearts", "Sittin' around", "Rays of burning light (Rays of light)", "Ghost without memory", "Runnin' out of road", "Can't take a lover (Talkin' in my sleep)", "I don't care what you think of me", "Crazy lonesome (a memory away)", "Caroline"]
+- by: Alabama Shakes
+  entryId: 10809
+  genre: [Blues rock, roots rock, soul, Southern rock, garage rock, Americana]
+  img: 220px-Alabama_Shakes_-_Sound_%26_Color_album_cover.jpg
+  parent: Alabama Shakes
+  releaseYear: 2015
+  title: Sound & Color
+  chansons: ["Sound & Color", "Don't wanna fight", "Dunes", "Future People", "Gimme All Your Love", "This Feeling", "Guess Who", "The Greatest", "Shoegaze", "Miss You", "Gemini", "Over My Head"]
+- by: Terry Allen
+  entryId: 10890
+  genre: [Country]
+  img: Terry_Allen_Lubbock%28on_everything%29.jpg
+  parent: Terry Allen (country singer)
+  releaseYear: 1979
+  title: Lubbock
+  chansons: ["Amarillo Highway", "Highplains jamboree", "The great Joe Bob (A regional tragedy)", "The wolfman of Del Rio", "Lubbock Woman", "The girl who danced Oklahoma", "Truckload of art", "The collector (and the art mob)", "Oui (a French song)", "Rendezvous USA", "Cocktails for Three", "The beautiful waitress", "High Horse Momma", "Blue Asian Reds", "New Delhi Freight Train", "FFA", "Flatland Farmer", "My amigo", "The pink and black song", "The thirty years waltz", "I just left myself"]
+- by: Terry Allen
+  entryId: 10893
+  genre: [Country]
+  img: TerryAllen_Juarez.jpg
+  parent: Terry Allen (country singer)
+  releaseYear: 1975
+  title: Juarez
+  chansons: ["The Juarez Device", "The characters/A simple story", "Cortez Sail", "Border Palace", "Dogwood", "Writing on rocks across the USA", "The radio... and real life", "There oughta be a law against Sunny Southern California", "What of Alicia", "Honeymoon in Cortez", "Four Comers", "The Run South", "Jabi/Street Walkin' Woman", "Cantina Carlotta", "La Despedida", "El Camino Instrumental", "El Camino"]
+- by: Terry Allen
+  entryId: 10895
+  genre: [Country]
+  img: Terry_Allen_Pedal_Steal.jpg
+  parent: Terry Allen (country singer)
+  releaseYear: 1985
+  title: Pedal Steal
+  chansons: ["Pedal Steel", "Fenceline", "Rodar Parar Atras", "Rollbak", "Figure Ate", "Home on the range", "Further away", "French Home"]
+- by: Terry Allen
+  entryId: 10899
+  genre: [Country]
+  img: Terry_Allen_Human_Remains.jpg
+  parent: Terry Allen (country singer)
+  releaseYear: 1996
+  title: Human Remains
+  chansons: ["Gone to Texas", "Room to Room", "Back to Black", "Wilderness of this world", "Little Sandy", "Buck Naked", "What of Alicia", "That kind of girl", "Galleria Dele Armi", "Crisis Site 13", "Peggy Legg", "After the fall", "Flatland Boogie"]
+- by: X
+  entryId: 10913
+  genre: [Alternative rock, alternative country]
+  img: XSeeHowWeAre.jpg
+  parent: Dave Alvin
+  releaseYear: 1987
+  title: See How We Are
+  chansons: ["I'm lost", "You", "4th of July", "In the time it takes", "Anyone can fill your shoes", "See how we are", "Left & Right", "When it rains", "Holiday story", "Surprise, surprise", "Cyrano de Berger's Back"]
+- by: Dave Alvin
+  entryId: 10919
+  genre: [Folk rock, country rock]
+  img: null
+  parent: Dave Alvin
+  releaseYear: 2011
+  title: Eleven Eleven
+  chansons: ["Harlan County Line", "Johnny Ace is Dead", "Black Roses of Texas", "Gary, Indiana 1959", "Run Conejo Run", "No worries Mija", "What's up with your brother?", "Murrietta's Head", "Manzanita", "Dirty Nightgown", "Two Lucky Burns"]

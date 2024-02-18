@@ -1,0 +1,33 @@
+body {
+    color: white;
+    text-align: center;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+#ul-albums {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: auto;
+    margin-top: 1em;
+    width: 65%;
+}
+
+#ul-albums li {
+    margin: 1em;
+    background-color: #1E1E1E;
+    border-radius: 20px;
+    padding: 1.5em;
+}
+
+#ul-albums img {
+    width: 220px;
+    height: 220px;
+}
+
+nav.nav-bar {
+    margin-bottom: 2.5em;
+}
