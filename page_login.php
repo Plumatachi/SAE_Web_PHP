@@ -3,7 +3,8 @@
     <head>
         <title>Sign in</title>
         <meta charset="utf-8">
-        <!-- <link rel="stylesheet" href="navbar.css"> -->
+        <link rel="stylesheet" href="static/css/navbar.css">
+        <link rel="stylesheet" href="static/css/login.css">
     </head>
     <body>
         <?php
